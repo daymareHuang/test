@@ -1,0 +1,103 @@
+@charset "UTF-8";
+
+/* 
+Base_#f9f8f4
+Second_#ebe3e0
+Highlight_#ae7a62
+White_#ffffff
+Black_#3b3a38
+ */
+
+/* 變數 */
+:root {
+  --color-base: #f9f8f4;
+  --color-second: #ebe3e0;
+  --color-highlight: #ae7a62;
+  --color-white: #ffffff;
+  --color-black: #3b3a38;
+
+}
+
+
+html {
+  width: 375px;
+  height: 667px;
+  font-size: 12px;
+}
+
+header {
+  width: 375px;
+  height: 50px;
+  flex: 0 1 auto;
+  /* 固定大小 */
+  background-color: #F8F9F3;
+}
+
+body {
+  min-width: 375px;
+  /* background-color: black; */
+  display: flex;
+  flex-direction: column;
+  /* height: 100vh; */
+  /* 设置body的高度为视口高度 */
+  /* margin: auto; */
+  /* 移除默认的margin */
+  background-color: var(--color-base);
+}
+
+
+/* 調整字體大小 */
+.text-xs {
+  font-size: 12px;
+}
+
+.text-s {
+  font-size: 14px;
+}
+
+.text-m {
+  font-size: 16px;
+}
+
+.text-l {
+  font-size: 18px;
+}
+
+.text-xl {
+  font-size: 20px;
+}
+
+/* 文字變成我們要的顏色 */
+/* 黑色 */
+.text-black {
+  color: var(--color-black)
+}
+
+/* 能夠讓上下不會被導覽列遮住 */
+div.container {
+  margin-top: 65px;
+  margin-bottom: 55px;
+}
+
+
+footer {
+  width: 375px;
+  flex: 0 1 auto;
+  /* 固定大小 */
+}
+
+/* 導覽列 */
+nav {
+  height: 55px;
+}
+
+.letterSpacing-1{
+  letter-spacing: 2px;
+}
+.letterSpacing-2{
+  letter-spacing: 10px;
+}
+
+.testBorder{
+  border: 2px solid;
+}

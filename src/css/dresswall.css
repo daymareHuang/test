@@ -1,0 +1,124 @@
+@charset "UTF-8";
+/* 
+Base_#f9f8f4
+Second_#ebe3e0
+Highlight_#ae7a62
+White_#ffffff
+Black_#3b3a38
+ */
+
+/* 變數 */
+:root {
+    --color-base: #f9f8f4;
+    --color-second: #ebe3e0;
+    --color-highlight: #ae7a62;
+    --color-white: #ffffff;
+    --color-black: #3b3a38;
+}
+
+/* 昱凱自己的css */
+/* 所有的icon */
+.icon {
+    max-width: 24px;
+}
+
+.iconsmall {
+    max-width: 15px;
+}
+
+/* user 大頭照大的版本 */
+.userImgBig {
+    height: 60px;
+    width: 60px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+/* user 大頭照小的版本 */
+.userImgSmall {
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    object-fit: cover;
+}
+
+/* user 的自我介紹 */
+.userIntro {
+    word-break: normal;
+}
+
+/* user 自己頁面的post相片 */
+.stylePic {
+    width: 50%;
+    height: 35vh;
+    object-fit: cover;
+
+}
+
+.stylePic:hover {
+    cursor: pointer;
+}
+
+/* user post 相片點開之後的大小 */
+.stylePicFull {
+    max-width: 374px;
+    height: 100%;
+}
+
+/* button hightlight 版本 */
+.btn-highlight {
+    background-color: var(--color-highlight);
+    color: #ffffff;
+}
+
+.btn-highlight:active {
+    background-color: #ae7a62;
+
+}
+
+/* button 黃底 */
+.btn-normal {
+    background-color: var(--color-second);
+    border: 1px solid var(--color-black);
+    color: var(--color-black)
+}
+
+/* background color setting */
+/* background color 黃底 */
+.bgc-normal {
+    background-color: var(--color-second);
+    color: var(--color-black);
+}
+
+/* background color 黑底 */
+.bgc-highlight {
+    background-color: var(--color-highlight);
+}
+
+/* tab 的 連結 變成這個黑色 */
+.nav-link {
+    color: var(--color-black) !important;
+}
+
+/* 卡片 */
+.post {
+    background-color: var(--color-second);
+}
+
+.postpic{
+    width:100%;
+    height: 50vh;
+    object-fit: cover;
+}
+
+
+
+/* .relativediv{
+    margin-top: 1rem;
+    position: relative;
+    mt-3 postion-relative
+}
+.relativedivright{
+    position:absolute; right: 0;
+    postion-absolute end-0
+} */

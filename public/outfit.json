@@ -1,0 +1,49 @@
+{
+    "title": "工裝風格、多層次穿搭",
+    "content": "以工裝風格為主，多層次穿搭展現個性，融合實用與時尚，打造獨特街頭造型。",
+    "images":"src/assets/img/picture3.jpg",
+    "items": [
+        {
+            "id": 1,
+            "name": "長袖T-shirt",
+            "image": "https://cdn.wimg.jp/closet/8jka9q/20200529234932723_500.jpg",
+            "brand": "Uniqlo",
+            "size": "M",
+            "color": "#365fae",
+            "positionX": 50,
+            "positionY": 50
+        },
+        {
+            "id": 1,
+            "name": "長袖T-shirt",
+            "image": "https://cdn.wimg.jp/closet/8jka9q/20200529234932723_500.jpg",
+            "brand": "Uniqlo",
+            "size": "M",
+            "color": "#365fae",
+            "positionX": 80,
+            "positionY": 120
+        },
+        {
+            "id": 1,
+            "name": "長袖T-shirt",
+            "image": "https://cdn.wimg.jp/closet/8jka9q/20200529234932723_500.jpg",
+            "brand": "Uniqlo",
+            "size": "M",
+            "color": "#365fae",
+            "positionX": 80,
+            "positionY": 120
+        },
+        {
+            "id": 1,
+            "name": "長袖T-shirt",
+            "image": "https://cdn.wimg.jp/closet/8jka9q/20200529234932723_500.jpg",
+            "brand": "Uniqlo",
+            "size": "M",
+            "color": "#365fae",
+            "positionX": 80,
+            "positionY": 120
+        }
+    ],
+    "scene": ["約會","逛街","工作"],
+    "season": "秋天"
+}

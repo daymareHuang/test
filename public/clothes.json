@@ -1,0 +1,79 @@
+{
+  "categories": [
+    {
+      "type": "衣服",
+      "items": [
+        {
+          "image": "https://cdn.wimg.jp/closet/8jka9q/20200529234932723_500.jpg",
+          "title": "白色襯衫"
+        },
+        {
+          "image": "https://cdn.wimg.jp/closet/8jka9q/20200529234932723_500.jpg",
+          "title": "黑色T恤"
+        },
+        {
+          "image": "https://cdn.wimg.jp/closet/8jka9q/20200529234932723_500.jpg",
+          "title": "條紋襯衫"
+        },
+        {
+          "image": "https://cdn.wimg.jp/closet/8jka9q/20200529234932723_500.jpg",
+          "title": "藍色針織衫"
+        },
+        {
+          "image": "https://cdn.wimg.jp/closet/8jka9q/20200529234932723_500.jpg",
+          "title": "紅色毛衣"
+        }
+      ]
+    },
+    {
+      "type": "褲子",
+      "items": [
+        {
+          "image": "https://images.wear2.jp/coordinate_item/Gri7kdk/utUNJNsM/1628608341_500.jpg",
+          "title": "黑色牛仔褲"
+        },
+        {
+          "image": "https://images.wear2.jp/coordinate_item/Gri7kdk/utUNJNsM/1628608341_500.jpg",
+          "title": "藍色牛仔褲"
+        },
+        {
+          "image": "https://images.wear2.jp/coordinate_item/Gri7kdk/utUNJNsM/1628608341_500.jpg",
+          "title": "灰色休閒褲"
+        },
+        {
+          "image": "https://images.wear2.jp/coordinate_item/Gri7kdk/utUNJNsM/1628608341_500.jpg",
+          "title": "卡其色短褲"
+        },
+        {
+          "image": "https://images.wear2.jp/coordinate_item/Gri7kdk/utUNJNsM/1628608341_500.jpg",
+          "title": "運動長褲"
+        }
+      ]
+    },
+    {
+      "type": "鞋子",
+      "items": [
+        {
+          "image": "https://cdn.wimg.jp/closet/8jka9q/20200529234932723_500.jpg",
+          "title": "白色運動鞋"
+        },
+        {
+          "image": "https://cdn.wimg.jp/closet/8jka9q/20200529234932723_500.jpg",
+          "title": "黑色皮鞋"
+        },
+        {
+          "image": "https://cdn.wimg.jp/closet/8jka9q/20200529234932723_500.jpg",
+          "title": "棕色休閒鞋"
+        },
+        {
+          "image": "https://cdn.wimg.jp/closet/8jka9q/20200529234932723_500.jpg",
+          "title": "藍色帆布鞋"
+        },
+        {
+          "image": "https://cdn.wimg.jp/closet/8jka9q/20200529234932723_500.jpg",
+          "title": "紅色拖鞋"
+        }
+      ]
+    }
+  ]
+}
