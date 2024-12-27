@@ -13,11 +13,7 @@ function AddAvatar() {
     const [croppedImage, setCroppedImage] = useState(null); // 儲存已編輯的圖片
     const cropperRef = useRef(null);
 
-<<<<<<< Updated upstream
-<<<<<<< HEAD
 
-=======
->>>>>>> 252e968be427db6494f0c4c74bc06a6e79cab518
     // 使用者資料獲取
     useEffect(()=>{
 
@@ -35,8 +31,7 @@ function AddAvatar() {
         userinfo();
     },[])
 
-=======
->>>>>>> Stashed changes
+
     // Toggle upload modal visibility
     const handleShowUploadModal = () => setShowUploadModal(true);
     const handleCloseUploadModal = () => setShowUploadModal(false);
@@ -111,11 +106,7 @@ function AddAvatar() {
             {/* Avatar Image */}
             <div className="avatar-container" onClick={handleAvatarClick}>
                 <img
-<<<<<<< Updated upstream
-                    src={croppedImage || image || "../src/assets/img/icon/avatar.svg"}
-=======
-                    src={croppedImage || image || userData.avatar}
->>>>>>> Stashed changes
+                    src={croppedImage || image || userData.avatar || "../src/assets/img/icon/avatar.svg"}
                     alt="Avatar"
                     className="rounded-circle userImgBig"
                 />

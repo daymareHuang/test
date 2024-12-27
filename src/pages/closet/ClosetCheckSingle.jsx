@@ -39,6 +39,7 @@ function ClosetCheckSingle() {
     }
   }
 
+  // 串接update的api
   function handleConfirmEdit() {
     // 這裡一樣可以下if(confirm('確定完成編輯？')){}
     // 要多一個拿到上面editing中 user's input並改寫edited裡面的value！
@@ -113,6 +114,23 @@ function ClosetCheckSingle() {
       alert('有必填項目未輸入！')
     }
 
+  }
+
+  // 串接delete的api
+  async function handleDelete() {
+    if (confirm('確定要刪除單品嗎？')) {
+      // 刪除api
+      const url = `http://localhost/Dressify/public/api/item/${itemId}`;
+      const response = await fetch(url, {
+        method: 'delete'
+      })
+      if (response.ok) {
+        alert('刪除單品成功！')
+        navigate('/Closet');
+      } else {
+        alert('出現錯誤，請重試！')
+      }
+    }
   }
 
   // 處理我的穿搭／推薦穿搭的隱藏、顯示
@@ -362,6 +380,9 @@ function ClosetCheckSingle() {
           </select>
         </div>
 
+        <div className='mt-5 mb-3 me-2 text-center d-none editing'>
+          <div onClick={handleDelete} className="btn btn-danger text-s px-5">刪除單品</div>
+        </div>
       </div>
 
       {/* <!-- 相關穿搭header --> */}
