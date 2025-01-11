@@ -71,7 +71,7 @@ function AddPop({close}) {
 
   return (
     <>
-      <div id="addOverlay" onClick={handleOverlay} className="mt-5 p-2 bg-dark bg-opacity-25" style={{height: '600px'}}>
+      <div id="addOverlay" onClick={handleOverlay} className="mt-5 p-2 bg-dark bg-opacity-25" style={{height: '1000px', width: '375px'}}>
         <div className="bg-light position-fixed rounded-3" style={{width: '200px', top: '80px', marginLeft: '13%'}}>
           <div ref={divElemS} onClick={handleClickAddS} className="border-bottom border-2 text-m text-center py-3 text-secondary"><img
             src="src/assets/img/icon/add_single.svg" className="align-middle opacity-50" style={{width: '25px'}}

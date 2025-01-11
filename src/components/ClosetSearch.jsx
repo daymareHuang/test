@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
 // 要考慮不要以component的方式嗎？這樣才有自己的搜尋頁面～
 function ClosetSearch({ close }) {
@@ -19,13 +19,29 @@ function ClosetSearch({ close }) {
   }
 
   const [result, setResult] = useState('');
+  const [UID, setUID] = useState('');
+
+  useEffect(() => {
+    const storedData = localStorage.getItem('user');
+    if (storedData) {
+      const userObj = JSON.parse(storedData);
+
+      // 提取 UID
+      const UID = userObj.UID;
+      // console.log(UID);
+      setUID(UID);
+    } else {
+      alert('請先登入！');
+      navigate('/Login')
+    }
+  }, [])
 
   async function handleSearch() {
     // 取得使用者輸入的input
     const keyword = keywordRef.current.value;
 
     // 送出fetch拿回相符合的items
-    const url = `http://localhost/Dressify/public/api/items/search?keyword=${keyword}`;
+    const url = `http://127.0.0.1:8000/api/items/${UID}/search?keyword=${keyword}`;
 
     const response = await fetch(url);
     const jsonObj = await response.json();
@@ -44,7 +60,7 @@ function ClosetSearch({ close }) {
       <div className="container-fluid fixed-top bg-light my-5" style={{ top: '14px' }}></div>
       <div className="py-5">
         {/* <!-- search bar --> */}
-        <div className="container-fluid fixed-top bg-light py-3" style={{ top: '50px' }}>
+        <div className="fixed-top bg-light py-3" style={{ top: '50px', width: '370px', left: '2px' }}>
           <div className="d-flex justify-content-between align-items-center pt-1">
             <div>
               <input ref={keywordRef} className="form-control rounded-pill text-m" type="text" placeholder=" 請輸入關鍵字：顏色 尺寸 品牌" style={{ width: '320px' }}
@@ -60,7 +76,7 @@ function ClosetSearch({ close }) {
         {/* <!-- 空間補償，避免被 fixed-top 遮擋 --> */}
         <div style={{ paddingTop: '80px' }}></div>
 
-        <div id="searchOverlay" onClick={handleOverlay} className="bg-dark bg-opacity-25" style={{ height: '600px' }}>
+        <div id="searchOverlay" onClick={handleOverlay} className="bg-dark bg-opacity-25" style={{ height: '600px', width: '375px' }}>
           {/* seach result */}
           <div ref={resultRef} className=" rounded-bottom-4" style={{ height: '262px', backgroundColor: 'var(--color-base)' }}>
 

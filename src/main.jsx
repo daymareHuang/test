@@ -12,6 +12,7 @@ import Dresswall from "./pages/dresswall/Dresswall.jsx"
 import Selfpage from "./pages/dresswall/Selfpage.jsx"
 import WallSearch from "./pages/dresswall/WallSearch.jsx"
 import Wallsearchresult from "./pages/dresswall/WallSearchResult.jsx"
+import Otherpage from './pages/dresswall/Otherpage.jsx';
 
 // 會員頁面&導覽頁
 import Dashboard from './pages/userinfo/Dashboard.jsx';
@@ -30,6 +31,8 @@ import ImgEditSaturate from "./pages/closetOutfit/ImgEditSaturate.jsx";
 import AddTag from "./pages/closetOutfit/AddTag.jsx";
 import OutfitDescription from "./pages/closetOutfit/OutfitDescription.jsx";
 import OutfitCreated from "./pages/closetOutfit/OutfitCreated.jsx";
+import ClosetCheckOutfit from "./pages/closetOutfit/ClosetCheckOutfit.jsx";
+import ClosetEditOutfit from "./pages/closetOutfit/ClosetEditOutfit.jsx";
 
 // closet
 import Closet from './pages/closet/Closet.jsx';
@@ -39,7 +42,12 @@ import Crop from './pages/closet/Crop.jsx';
 import ClosetEditSingle from './pages/closet/ClosetEditSingle.jsx';
 import ClosetCheckSingle from './pages/closet/ClosetCheckSingle.jsx';
 
+// 先把dashboard設成連進去就會到的地方 想要改了話請自行修改
 const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Login />
+  },
   {
     path: "/Image",
     element: <OutfitContextProvider><Image /></OutfitContextProvider>
@@ -93,11 +101,11 @@ const router = createBrowserRouter([
     element: <Wallsearchresult />
   },
   {
-    path: "/dashboard",
-    element: <Dashboard />
+    path: "/dresswall/OtherPpl",
+    element: <Otherpage />
   },
   {
-    path: "/",
+    path: "/dashboard",
     element: <Dashboard />
   },
   {
@@ -121,6 +129,14 @@ const router = createBrowserRouter([
     element: <ClosetMatch/>,
   },
   {
+    path: "/ClosetMatch/:outfitID",
+    element: <ClosetCheckOutfit/>,
+  },
+  {
+    path: "/ClosetEditOutfit/:outfitID",
+    element: <ClosetEditOutfit/>,
+  },
+  {
     path: "/ClosetPart/:part",
     element: <ClosetPart/>,
   },
@@ -139,7 +155,7 @@ const router = createBrowserRouter([
 ]);
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
+  // <StrictMode>
     <RouterProvider router={router} />
-  </StrictMode>,
+  // </StrictMode>,
 )

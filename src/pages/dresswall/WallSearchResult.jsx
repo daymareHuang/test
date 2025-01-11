@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Modal, Button } from 'react-bootstrap'
+import { Spinner, Modal, Button } from 'react-bootstrap'
 import Post from '/src/components/Post.jsx'
 import MyLayout from '../../layouts/MyLayout'
 // 取得當前頁面的 location 物件
@@ -15,82 +15,123 @@ function Wallsearchresult() {
   const data = location.state?.data || 'No data';
 
   // 取得從上一頁傳遞過來的複雜資料
-  const formData = location.state?.formData || {};
+  const formData = location.state?.formData || 'No data';
+  // console.log(formData)
+  // 取得從上一頁傳遞按鈕的資料
+  const buttonFormData = location.state?.buttonFormData || 'No data';
 
   const [show, setShow] = useState(false);
   const [resultPost, setResultPost] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
   if (data != 'No data') {
     useEffect(() => {
+      setLoading(true)
       const getresult = async () => {
         try {
-          const response = await axios.post('http://localhost/Dressify/public/api/search', {
+          const response = await axios.post('http://127.0.0.1:8000/api/search', {
             keyword: data,
           })
           // console.log(response.data)
           setResultPost(response.data)
+          //讀取結束 顯示畫面
+          setLoading(false)
         }
         catch (error) {
           console.error('ERROR: ', error.message);
+          setLoading(false)
         }
       }
       getresult();
+
     }, [])
   }
-  else {
-
+  else if (buttonFormData != 'No data') {
     useEffect(() => {
+      setLoading(true);
       const getcomplicated = async () => {
         try {
-          const response = await axios.post('http://localhost/Dressify/public/api/complicatedsearch', {
-            clothesType: formData.clothesType,
-            color: formData.color,
-            brand: formData.brand,
-            size: formData.size,
-            season: formData.season
+          const response = await axios.post('http://127.0.0.1:8000/api/complicatedsearch', {
+            clothesType: buttonFormData.clothesType,
+            color: buttonFormData.color,
+            brand: buttonFormData.brand,
+            size: buttonFormData.size,
+            season: buttonFormData.season
           })
-          // console.log(response.data)
-           setResultPost(response.data)
+          //console.log(response.data)
+          setResultPost(response.data)
+          //讀取結束 顯示畫面
+          setLoading(false)
+          //console.log(resultPost.clothesType)
         }
         catch (error) {
           console.error('ERROR: ', error.message);
+          setLoading(false)
         }
       }
       getcomplicated();
     }, [])
 
   }
+  else {
+    useEffect(() => {
+      setLoading(true);
+      const getcomplicated = async () => {
+        try {
+          const response = await axios.post('http://127.0.0.1:8000/api/complicatedsearch', {
+            clothesType: formData.clothesType,
+            color: formData.color,
+            brand: formData.brand,
+            size: formData.size,
+            season: formData.season
+          })
+          setResultPost(response.data)
+          //讀取結束 顯示畫面
+          setLoading(false)
+          //console.log(resultPost.clothesType)
+        }
+        catch (error) {
+          console.error('ERROR: ', error.message);
+          setLoading(false)
+        }
+      }
+      getcomplicated();
+    }, [])
+  }
+
+
 
 
   return (
-
     <MyLayout>
       <div className="container">
-
         {/* <!--search --> */}
-        <form className="d-flex position-relative mt-3" role="search">
+        {/* <form className="d-flex position-relative mt-3" role="search"> */}
 
-          {/* <!--search input --> */}
-          <input className="form-control rounded-start-pill rounded-end-0 bgc-normal" type="search" placeholder="Search" aria-label="Search" />
-          {/* <!--condition button --> */}
-          {/* <!--more condition to set --> */}
-          <button type="button" className="btn btn-normal  rounded-end-0  rounded-start-0 " onClick={handleShow} >
+        {/* <!--search input --> */}
+        {/* <input className="form-control rounded-start-pill rounded-end-0 bgc-normal" type="search" placeholder="Search" aria-label="Search" /> */}
+        {/* <!--condition button --> */}
+        {/* <!--more condition to set --> */}
+        {/* <button type="button" className="btn btn-normal  rounded-end-0  rounded-start-0 " onClick={handleShow} >
             <img className="icon" src="../src/assets/img/icon/settings-sliders.svg" alt="進階搜尋" />
-          </button>
-          {/* <!--search button --> */}
-          <a className="btn btn-normal rounded-end-pill rounded-start-0" type="submit" href="../dresswall/result">
+          </button> */}
+        {/* <!--search button --> */}
+        {/* <a className="btn btn-normal rounded-end-pill rounded-start-0" type="submit" href="../dresswall/result">
             <img className="icon" src="../src/assets/img/icon/search.svg" alt="搜尋" />
-          </a>
+          </a> */}
 
-        </form>
+        {/* </form> */}
 
+
+        <p className='text-center text-xl fw-bold'>搜尋結果</p>
         {
-          resultPost.map((post, key) => (
-            <Post postpic={post.EditedPhoto} avatar={post.Avatar} name={post.UserName} key={key} />
-          ))
+          loading ? (<div className='d-flex justify-content-center'><Spinner animation="border" role="status" className="mt-3 " variant="secondary" /></div>) : (
+            resultPost.map((post, key) => (
+              <Post stylefilter={post.FilterStyle} postpic={post.EditedPhoto} avatar={post.Avatar} name={post.UserName} key={key} />
+            )))
         }
 
         {/* Search Modal */}

@@ -7,13 +7,13 @@ import MyLayout from '../../layouts/MyLayout'
 import AddAvatar from "../../components/AddAvatar";
 import { Tabs, Tab } from 'react-bootstrap';
 import axios from 'axios';
-import { use } from 'react';
+
 
 
 
 function Selfpage() {
     const [show, setShow] = useState(false);
-    const [UID, setUID] = useState(0);
+    // const [UID, setUID] = useState(0);
     const [userName, setUserName] = useState('');
     const [userImg, setUserImg] = useState('');
     const [postNumber, setPostNumber] = useState(0);
@@ -22,41 +22,44 @@ function Selfpage() {
     const [userPosts, setUserPosts] = useState([]);
     const [userCollects, setUserCollects] = useState([]);
 
+    // 拿取localstorage登入的是誰
+    const data = JSON.parse(localStorage.getItem('user'))
+
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
 
     //利用useEffect 讓api僅需要抓一次的api 渲染一次
     // 使用者資料獲取
-    useEffect(() => {
-        const userinfo = async () => {
-            try {
-                const response = await axios.post('http://localhost/Dressify/public/api/userself', {
-                    UID: 1,
-                });
-                // console.log('Response', response.data[0].UID);
-                setUID(response.data[0].UID);
-                setUserName(response.data[0].UserName);
-                // setUserImg(response.data[0].Avatar);
+    // useEffect(() => {
+    //     const userinfo = async () => {
+    //         try {
+    //             const response = await axios.post('http://127.0.0.1:8000/api/userself', {
+    //                 UID: data.UID,
+    //             });
+    //             // console.log('Response', response.data[0].UID);
+    //             setUID(response.data[0].UID);
+    //             setUserName(response.data[0].UserName);
+    //             // setUserImg(response.data[0].Avatar);
 
-            }
-            catch (error) {
-                console.error('ERROR: ', error.message);
-            }
-        }
+    //         }
+    //         catch (error) {
+    //             console.error('ERROR: ', error.message);
+    //         }
+    //     }
 
-        userinfo();
+    //     userinfo();
 
-    }, [])
+    // }, [])
 
     // 獲取貼文數
     useEffect(() => {
         const getpostNum = async () => {
             try {
-                const response = await axios.post('http://localhost/Dressify/public/api/getpostnum', {
-                    UID: 1,
+                const response = await axios.post('http://127.0.0.1:8000/api/getpostnum', {
+                    UID: data.UID,
                 })
-                // console.log(response.data);
+                //  console.log(response.data);
                 setPostNumber(response.data[0].postNum);
             } catch (error) {
                 console.error('ERROR: ', error.message)
@@ -66,13 +69,35 @@ function Selfpage() {
 
     }, [])
 
+    // 拿fan數
+     useEffect(() => {
+        const getFanNum = async () => {
+            try {
+                const response = await axios.post('http://127.0.0.1:8000/api/getfannum', {
+                    UID: data.UID,
+                })
+                 console.log(response.data[0])
+                 if(response.data[0].FanNumber){
+                     setFanNumber(response.data[0].FanNumber)
+                 }
+                 else{
+                    setFanNumber(0)
+                 }
+            } catch (error) {
+                console.error('ERROR: ', error.message)
+
+            }
+        }
+        getFanNum();
+    },[])
+
 
     // 得到user的post
     useEffect(() => {
         const getuserpost = async () => {
             try {
-                const response = await axios.post('http://localhost/Dressify/public/api/getuserpost', {
-                    UID: 1,
+                const response = await axios.post('http://127.0.0.1:8000/api/getuserpost', {
+                    UID: data.UID,
                 })
                 //  console.log(response.data)
                 setUserPosts(response.data)
@@ -89,8 +114,8 @@ function Selfpage() {
     useEffect(() => {
         const getusercollect = async () => {
             try {
-                const response = await axios.post('http://localhost/Dressify/public/api/getusercollect', {
-                    UID: 1,
+                const response = await axios.post('http://127.0.0.1:8000/api/getusercollect', {
+                    UID: data.UID,
                 })
                 //  console.log(response.data)
                 setUserCollects(response.data)
@@ -145,7 +170,7 @@ function Selfpage() {
                     <div className="col-9 m-auto text-truncate overflow-hidden">
                         {/* <!--user's Name --> */}
                         {/* <!--should let it ... more than a number and limit of character--> */}
-                        <h5 className="userName text-xl text-black ">{userName}</h5>
+                        <h5 className="userName text-xl text-black fw-bold">{data.UserName}</h5>
                         {/* <!--user's userName --> */}
                         {/* <!--should let it have 25 limit of character --> */}
                         {/* <span className="name text-s text-black">ID: {UID}</span> */}
@@ -155,16 +180,15 @@ function Selfpage() {
                 {/* <!--user's introduction --> */}
                 <div className=" m-auto mt-3">
                     {/* <!--userIntroduction --> */}
-                    <p className="userIntro mx-3 text-black text-xs ">
-                        我是小雁我是小雁我是小雁我是小雁我是小雁
-                        我是小雁我是小雁我是小雁我是小雁我是小雁我是小雁
-                        我是小雁我是小雁我是小雁我是小雁我是小雁
-                        我是小雁我是小雁我是小雁我是小雁我是小雁
-                        我是小雁我是小雁我是小雁我是小雁我是小雁我是小雁
-                        我是小雁我是小雁我是小雁我是小雁我是小雁
-                        <img className="icon" src="../src/assets/img/icon/pencil.svg" alt="edit profile" onClick={handleShow} style={{ width: "18px", marginLeft: "5px" }} />
-                    </p>
-
+                    {data.UserIntro ?
+                        (<p className="userIntro mx-3 text-black text-xs ">{data.UserIntro}
+                            <img className="icon" src="../src/assets/img/icon/pencil.svg" alt="edit profile" onClick={handleShow} style={{ width: "18px", marginLeft: "5px" }} />
+                        </p>)
+                        :
+                        (<p className="userIntro mx-3 text-secondary text-xs text-center">尚無介紹
+                            <img className="icon" src="../src/assets/img/icon/pencil.svg" alt="edit profile" onClick={handleShow} style={{ width: "18px", marginLeft: "5px" }} />
+                        </p>)
+                    }
                 </div>
 
                 {/* <!--user's number of post and fan --> */}
@@ -173,7 +197,7 @@ function Selfpage() {
                     {/* <!--postNumber --> */}
                     <p className="text-m my-auto ms-3">{postNumber} 篇文章</p>
                     {/* <!--fanNumber should be right end of this div --> */}
-                    <p className="text-m my-auto me-3">fanNumber位粉絲</p>
+                    <p className="text-m my-auto me-3">{fanNumber} 位粉絲</p>
                 </div>
 
                 {/* <!--user post and bookmark --> */}
@@ -207,15 +231,15 @@ function Selfpage() {
                          */}
                         {
                             userPosts.map((post, key) => (
-                                <img className="stylePic col-6 mt-3" src={post.EditedPhoto} key={key} />
+                                <img className="stylePic col-6 mt-3" style={{filter: (post.FilterStyle || '')}} src={post.EditedPhoto} key={key} />
                             ))
                         }
 
                     </Tab>
                     <Tab id="collectTab" eventKey="Collect" title="Collect" className='text-black row bgc-normal p-3 rounded'>
                         {
-                            userCollects.map((collect, key)=>(
-                                <img className="stylePic col-6 mt-3" src={collect.EditedPhoto} key={key}/>
+                            userCollects.map((collect, key) => (
+                                <img className="stylePic col-6 mt-3" style={{filter: (collect.FilterStyle || '')}} src={collect.EditedPhoto} key={key} />
                             ))
                         }
                     </Tab>

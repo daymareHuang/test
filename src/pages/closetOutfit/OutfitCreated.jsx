@@ -1,23 +1,43 @@
 import React, { useEffect, useState, useContext } from 'react'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../css/Dressify.css'
 
 import OutfitContext from "../../contexts/OutfitContext";
 import MyLayout from '../../layouts/MyLayout';
+import axios from 'axios';
+
 
 function OutfitCreated() {
-    const { imageSrc, CroppedSrc, filterStyle } = useContext(OutfitContext)
+    let navigate = useNavigate();
+    const data = JSON.parse(localStorage.getItem('user'))
+    const location = useLocation();
 
-    const handleAdd = () => { 
-        navigate("/")
-    }
+    const outFitID = location.state?.OutFitID || 0;
+    const { imageSrc, CroppedSrc, filterStyle } = useContext(OutfitContext);
+    console.log(outFitID)
+
+
     const handleCloset = () => {
-        navigate("/Closet")
-     }
+        console.log(111);
+        navigate("/ClosetMatch")
+    }
+
+
+    // 發佈貼文
     const handlePost = () => {
-        
-     }
+        try {
+            const response = axios.post('http://127.0.0.1:8000/api/PostPost', {
+                OutfitID: outFitID,
+            });
+
+        } catch (error) {
+            console.error('ERROR: ', error.message);
+        }
+        navigate('/dresswall')
+    }
+
+
     return (
         <MyLayout>
             <div className="d-flex flex-column px-5 container " style={{ height: '543px', marginTop: '50px' }}>
@@ -28,14 +48,12 @@ function OutfitCreated() {
                     </span>
                 </div>
 
-                <div className='row mt-3'>
-                    <button onClick={handleAdd} className='col btn rounded-pill text-s' style={{ backgroundColor: "var(--color-black)", color: "var(--color-white)" }}>繼續新增</button>
-                    <button onClick={handleCloset} className='col btn rounded-pill text-s' style={{ backgroundColor: "var(--color-black)", color: "var(--color-white)" }}>衣櫃首頁</button>
-                    <button onClick={handlePost} className='col btn rounded-pill text-s' style={{ backgroundColor: "var(--color-black)", color: "var(--color-white)" }}>發佈到穿搭牆</button>
+                <div className='d-flex justify-content-between row mt-3'>
+                    <button onClick={handleCloset} className='col-4 btn rounded-pill text-s' style={{ backgroundColor: "var(--color-black)", color: "var(--color-white)" }}>衣櫃首頁</button>
+                    <button onClick={handlePost} className='col-4 btn rounded-pill text-s' style={{ backgroundColor: "var(--color-black)", color: "var(--color-white)" }}>發佈到穿搭牆</button>
                 </div>
 
             </div>
-
 
         </MyLayout>
     )

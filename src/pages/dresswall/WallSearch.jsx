@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Navigate, useNavigate } from 'react-router-dom';
-import { Modal, Button } from 'react-bootstrap'
+import { Spinner, Modal, Button } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import MyLayout from '../../layouts/MyLayout'
 import PopularButton from '../../components/PopularButton'
@@ -15,40 +15,48 @@ function Wallsearch() {
   const [brands, setBrands] = useState([]);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const [loading, setLoading] = useState(false);
+
 
   // 把東西傳到下一個頁面
   const [keyword, setKeyword] = useState('');
   const navigate = useNavigate();
+  
   const handleSearch = () => {
-        // 將搜尋條件添加到 URL
-    navigate('/dresswall/result',{state:{data: keyword} });
+    // 將搜尋條件添加到 URL
+    navigate('/dresswall/result', { state: { data: keyword } });
   }
 
-  const [formData, setFormData] = useState({clothesType:'default', color:'白', brand:'default', size:'default', season:'default'});
+  const [formData, setFormData] = useState({ clothesType: 'default', color: '白', brand: 'default', size: 'default', season: 'default' });
 
-  const handleChange = (event) =>{
+  const handleChange = (event) => {
     // 在event.target裡面拿到剛剛有改變的值
-    const{ name, value }= event.target;
+    const { name, value } = event.target;
     setFormData({
       ...formData,
       [name]: value,
     });
+    // console.log(formData)
   }
 
   const handleComplicated = () => {
-    navigate('/dresswall/result',{state:{ formData } });
+    navigate('/dresswall/result', { state: { formData } });
   }
 
 
   useEffect(() => {
+    setLoading(true)
     const topbrands = async () => {
       try {
-        const response = await axios.get('http://localhost/Dressify/public/api/brand')
+        const response = await axios.get('http://127.0.0.1:8000/api/brand')
         // console.log(response.data)
         setBrands(response.data)
+        setLoading(false)
+
       }
       catch (error) {
         console.error('ERROR: ', error.message);
+        setLoading(false)
       }
     }
 
@@ -56,14 +64,18 @@ function Wallsearch() {
   }, [])
 
   useEffect(() => {
+    setLoading(true)
     const topclothes = async () => {
       try {
-        const response = await axios.get('http://localhost/Dressify/public/api/clothestype')
+        const response = await axios.get('http://127.0.0.1:8000/api/clothestype')
         // console.log(response.data)
         setClothes(response.data)
+        setLoading(false)
+
       }
       catch (error) {
         console.error('ERROR: ', error.message);
+        setLoading(false)
       }
     }
 
@@ -71,24 +83,25 @@ function Wallsearch() {
   }, [])
 
 
+
   return (
     <MyLayout>
       <div className="container">
-      
+
 
         {/* <!-- search bar  --> */}
         {/* <!-- should have margin bottom  --> */}
         <form className="d-flex position-relative mt-3" role="search" action='/search' method="get">
-        
+
           {/* <!-- search input  --> */}
-          <input className="form-control rounded-start-pill rounded-end-0 bgc-normal" type="text" placeholder="Search" aria-label="Search" name='keyword' value={keyword} onChange={(e) => setKeyword(e.target.value)} required/>
+          <input className="form-control rounded-start-pill rounded-end-0 bgc-normal" type="text" placeholder="Search" aria-label="Search" name='keyword' value={keyword} onChange={(e) => setKeyword(e.target.value)} required />
           {/* <!-- condition button  --> */}
           {/* <!-- more condition to set  --> */}
-          <button type="button" className="btn btn-normal  rounded-end-0  rounded-start-0 " onClick={handleShow} >
+          <button type="button" className="btn btn-normal  rounded-end-0  rounded-start-0 " onClick={handleShow} style={{ border: 0 }}>
             <img className="icon" src="../src/assets/img/icon/settings-sliders.svg" alt="" />
           </button>
           {/* <!-- search button  --> */}
-          <button className="btn btn-normal rounded-end-pill rounded-start-0" type='button' onClick={handleSearch} >
+          <button className="btn btn-normal rounded-end-pill rounded-start-0" type='button' onClick={handleSearch} style={{ border: 0 }}>
             <img className="icon" src="../src/assets/img/icon/search.svg" alt="" />
           </button>
 
@@ -100,9 +113,10 @@ function Wallsearch() {
         <div className="position-relative mt-3 w-100">
           <h2 className="text-black fw-bold">衣服</h2>
           {
+            loading ? (<div className="d-flex justify-content-center"><Spinner animation="border" role="status" variant="secondary" /></div>) : (
             clothes.map((type, key) => (
-              <PopularButton name={type.Name} key={key} />
-            ))
+              <PopularButton name={type.Name} kind="clothesType" key={key} />
+            )))
           }
 
         </div>
@@ -111,14 +125,15 @@ function Wallsearch() {
         <div className="position-relative mt-3 w-100">
           <h2 className="text-black fw-bold">品牌</h2>
           {
-            brands.map((brand, key) => (
-              <PopularButton name={brand.Brand} key={key} />
-            ))
+            loading ? (<div className="d-flex justify-content-center"><Spinner animation="border" role="status" variant="secondary" /></div>) : (
+              brands.map((brand, key) => (
+                <PopularButton name={brand.Brand} kind={"brand"} key={key} />
+              )))
           }
         </div>
 
         {/* <!-- Populartag  --> */}
-        <div className="position-relative mt-3 w-100">
+        {/* <div className="position-relative mt-3 w-100">
           <h2 className="text-black fw-bold">人氣標籤</h2>
           <PopularButton name="#tag" />
           <PopularButton name="#tag" />
@@ -126,7 +141,7 @@ function Wallsearch() {
           <PopularButton name="#tag" />
           <PopularButton name="#tag" />
           <PopularButton name="#tag" />
-        </div>
+        </div> */}
 
         {/* button to open the modal */}
         {/* <Button variant="primary" onClick={handleShow}>
@@ -147,7 +162,7 @@ function Wallsearch() {
               <div className="row">
                 <div className="col-2 text-s text-black">類型:</div>
                 <div className="col-10 text-s">
-                  <select className="w-100 rounded-pill" name="clothesType" id="" defaultValue="default" style={{ backgroundColor: "#ebe3e0" }} value={formData.clothesType} onChange={handleChange}>
+                  <select className="w-100 rounded-pill" name="clothesType" id="" style={{ backgroundColor: "#ebe3e0" }} value={formData.clothesType || "default"} onChange={handleChange}>
                     <option value="default" disabled >請選擇一個類型</option>
                     <optgroup label="外套">
                       <option value="1">羽絨外套</option>
@@ -200,7 +215,7 @@ function Wallsearch() {
               <div className="row ">
                 <div className="col-2 text-s">顏色:</div>
                 <div className="col-10 text-s">
-                  <select className="w-100 rounded-pill" name="color" value={formData.color} onChange={handleChange} id="" defaultValue="白" style={{ backgroundColor: "#ebe3e0" }}>
+                  <select className="w-100 rounded-pill" name="color" value={formData.color || "白"} onChange={handleChange} id="" style={{ backgroundColor: "#ebe3e0" }}>
                     <option value="白">白色</option>
                     <option value="灰">灰色</option>
                     <option value="黑">黑色</option>
@@ -220,7 +235,7 @@ function Wallsearch() {
               <div className="row">
                 <div className="col-2 text-s">品牌:</div>
                 <div className="col-10 text-s">
-                  <select className="w-100 rounded-pill" name="brand" value={formData.brand} onChange={handleChange}id="" defaultValue="default" style={{ backgroundColor: "#ebe3e0" }}>
+                  <select className="w-100 rounded-pill" name="brand" value={formData.brand || "default"} onChange={handleChange} id="" style={{ backgroundColor: "#ebe3e0" }}>
                     <option value="default" disabled >請選擇一個品牌</option>
                     <option value="Uniqlo">Uniqlo</option>
                     <option value="Zara">Zara</option>
@@ -238,7 +253,7 @@ function Wallsearch() {
               <div className="row">
                 <div className="col-2 text-s">尺吋:</div>
                 <div className="col-10 text-s">
-                  <select className="w-100 rounded-pill" name="size"value={formData.size} onChange={handleChange} id="" defaultValue="default" style={{ backgroundColor: "#ebe3e0" }}>
+                  <select className="w-100 rounded-pill" name="size" value={formData.size || "default"} onChange={handleChange} id="" style={{ backgroundColor: "#ebe3e0" }}>
                     <option value="default" disabled >請選擇一個尺寸</option>
                     <option value="XS">XS</option>
                     <option value="S">S</option>
@@ -256,7 +271,7 @@ function Wallsearch() {
               <div className="row">
                 <div className="col-2 text-s">季節:</div>
                 <div className="col-10 text-s">
-                  <select className="w-100 rounded-pill" name="season" value={formData.season} onChange={handleChange}id="" defaultValue="default" style={{ backgroundColor: "#ebe3e0" }}>
+                  <select className="w-100 rounded-pill" name="season" value={formData.season || "default"} onChange={handleChange} id="" style={{ backgroundColor: "#ebe3e0" }}>
                     <option value="default" disabled >請選擇一個季節</option>
                     <option value="Spring">春</option>
                     <option value="Summer">夏</option>
@@ -267,12 +282,10 @@ function Wallsearch() {
               </div>
               <br />
 
-              
+              <a className='btn btn-normal rounded-pill w-100 d-flex justify-content-center ' variant="secondary" type='submit' style={{ height: "30px" }} onClick={handleComplicated}>
+                <img className="icon " src="../src/assets/img/icon/search.svg" alt="搜尋" />
+              </a>
 
-                <a className='btn btn-normal rounded-pill w-100 d-flex justify-content-center '  variant="secondary" type='submit' style={{height:"30px"}} onClick={handleComplicated}>
-                  <img className="icon " src="../src/assets/img/icon/search.svg" alt="搜尋" />
-                </a>
-              
 
 
             </form>

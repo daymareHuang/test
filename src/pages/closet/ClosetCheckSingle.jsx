@@ -70,7 +70,7 @@ function ClosetCheckSingle() {
     // console.log(updatedObj);
 
     async function updateData() {
-      const url = `http://localhost/Dressify/public/api/item/${itemId}`;
+      const url = `http://127.0.0.1:8000/api/item/${itemId}`;
       try {
         const response = await fetch(url, {
           method: 'put',
@@ -120,7 +120,7 @@ function ClosetCheckSingle() {
   async function handleDelete() {
     if (confirm('確定要刪除單品嗎？')) {
       // 刪除api
-      const url = `http://localhost/Dressify/public/api/item/${itemId}`;
+      const url = `http://127.0.0.1:8000/api/item/${itemId}`;
       const response = await fetch(url, {
         method: 'delete'
       })
@@ -163,7 +163,7 @@ function ClosetCheckSingle() {
 
   useEffect(() => {
     async function getItemData() {
-      const url = `http://localhost/Dressify/public/api/item/${itemId}`;
+      const url = `http://127.0.0.1:8000/api/item/${itemId}`;
       try {
         const response = await fetch(url);
         const jsonObj = await response.json();
@@ -175,7 +175,7 @@ function ClosetCheckSingle() {
     }
 
     async function getOutfitData() {
-      const url = `http://localhost/Dressify/public/api/item/${itemId}/outfits`;
+      const url = `http://127.0.0.1:8000/api/item/${itemId}/outfits`;
       try {
         const response = await fetch(url);
         const jsonObj = await response.json();
@@ -186,8 +186,8 @@ function ClosetCheckSingle() {
       }
     }
 
-    async function getRecommData() {
-      const url = `http://localhost/Dressify/public/api/item/${itemId}/recomms`;
+    async function getRecommData(UID) {
+      const url = `http://127.0.0.1:8000/api/item/${itemId}/${UID}/recomms`;
       try {
         const response = await fetch(url);
         const jsonObj = await response.json();
@@ -198,12 +198,23 @@ function ClosetCheckSingle() {
       }
     }
 
-    getItemData();
-    getOutfitData();
-    getRecommData();
-  }, [])
+    // 從 localStorage 取得儲存的用戶資料
+    const storedData = localStorage.getItem('user');
 
-  const base64 = ''
+    if (storedData) {
+      const userObj = JSON.parse(storedData);
+
+      // 提取 UID
+      const UID = userObj.UID;
+      // console.log(UID);
+      getItemData();
+      getOutfitData();
+      getRecommData(UID);
+    } else {
+      alert('請先登入！');
+      navigate('/Login')
+    }
+  }, [])
 
   const navigate = useNavigate();
   function handleLastPage() {
@@ -213,7 +224,7 @@ function ClosetCheckSingle() {
     <ClosetLayoutN>
       <div className="container" >
         {/* <!-- header --> */}
-        <div className="fixed-top bg-light my-5" style={{ top: '14px' }}>
+        <div className="fixed-top bg-light my-5" style={{ top: '14px', width: '375px' }}>
           <div className="d-flex justify-content-between align-items-center border-bottom">
             <b><div ref={titleRef} className="p-3 text-m">{item.Title}</div></b>
 
@@ -444,7 +455,8 @@ function ClosetCheckSingle() {
             <Post key={post.PostID}
               name={post.outfit.member.UserName}
               postpic={post.outfit.EditedPhoto}
-              usericon={post.outfit.member.Avatar} />
+              usericon={post.outfit.member.Avatar} 
+            />
           ))
         ) : (
           <p>No recommendations available</p> // 你可以替換成適合的占位內容

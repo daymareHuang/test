@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import ClosetLayoutO from '../../layouts/ClosetLayoutO'
 import { useLocation, useNavigate } from 'react-router-dom';
 
@@ -10,6 +10,22 @@ function ClosetEditSingle() {
   const colorRef = useRef();
   const brandRef = useRef();
   const sizeRef = useRef();
+  const [UID, setUID] = useState('');
+
+  useEffect(() => {
+    const storedData = localStorage.getItem('user');
+    if (storedData) {
+      const userObj = JSON.parse(storedData);
+
+      // 提取 UID
+      const UID = userObj.UID;
+      // console.log(UID);
+      setUID(UID);
+    } else {
+      alert('請先登入！');
+      navigate('/Login')
+    }
+  }, [])
 
   const navigate = useNavigate();
   async function handleComplete() {
@@ -21,8 +37,9 @@ function ClosetEditSingle() {
     const Size = sizeRef.current.value === '0' ? null : sizeRef.current.value;
     // console.log(colorRef.current.value);
 
+    // console.log(UID);
     const inputObj = {
-      UID: 1,  // 之後搭配auth驗證後，再看看怎麼調整～
+      UID,  // 之後搭配auth驗證後，再看看怎麼調整～
       Title,
       Type,
       Color,
@@ -34,7 +51,7 @@ function ClosetEditSingle() {
 
     if (Title !== '' && Type !== null) {
       // 使用fetch存入db中
-      const url = 'http://localhost/Dressify/public/api/item';
+      const url = 'http://127.0.0.1:8000/api/item';
       const response = await fetch(url, {
         method: 'post',
         body: JSON.stringify(inputObj),
@@ -54,7 +71,7 @@ function ClosetEditSingle() {
   }
   return (
     <ClosetLayoutO>
-      <div className="fixed-top bg-light d-flex justify-content-center" style={{ top: '50px' }}>
+      <div className="fixed-top bg-light d-flex justify-content-center" style={{ top: '50px', width: '375px' }}>
         {croppedImgURL ? (
           <img src={croppedImgURL} alt="pic" height="200px" />
         ) : (
@@ -184,7 +201,7 @@ function ClosetEditSingle() {
 
       </div>
 
-      <div id="progress" className="fixed-bottom border-top d-flex justify-content-between" style={{ height: '55px' }}>
+      <div id="progress" className="fixed-bottom border-top d-flex justify-content-between" style={{ height: '55px', width: '375px' }}>
         <a href="./Crop" className="btn text-xs m-3 px-3 rounded-pill text-light" style={{ backgroundColor: 'var(--color-highlight)' }}>上一步</a>
         {/* 若使用者在此點擊「上一步」=> 會沒有將資料一同傳過去 */}
 

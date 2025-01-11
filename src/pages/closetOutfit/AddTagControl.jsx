@@ -8,7 +8,7 @@ import AddTagCloset from "./AddTagCloset";
 import AddTagComment from "./AddTagComment";
 
 function AddTagControl({ setIsSliderVisible, selectID }) {
-    const [control, setControl] = useState('R')
+    const [control, setControl] = useState('L')
 
     function handleCloset() {
         setControl('L')
@@ -29,6 +29,10 @@ function AddTagControl({ setIsSliderVisible, selectID }) {
         styleL = {backgroundColor: 'var(--color-highlight)', color: 'var(--color-white)'}
     }
 
+    const handleTest = (event)=>{
+        // 阻止點到下面的
+        event.stopPropagation()
+    }
 
 
     return (
@@ -38,9 +42,10 @@ function AddTagControl({ setIsSliderVisible, selectID }) {
             style={{
                 backgroundColor: 'var(--color-base)',
                 boxShadow: '2px -10px 20px hsl(19, 0%, 50%)',
-                height: '450px', overflowY: 'auto',
-                bottom:'-53px'
-            }}>
+                height: '500px', overflowY: 'auto',
+                bottom:'-100px'
+            }}
+            onClick={handleTest}>
 
             {/* title */}
             <div className='row'>
@@ -62,6 +67,9 @@ function AddTagControl({ setIsSliderVisible, selectID }) {
 
             {/* 從衣櫃 or 新增標註 */}
             <div className='w-100'>
+                <span>
+
+                </span>
                 {control == 'R'
                     ? <AddTagComment selectID={selectID} setIsSliderVisible={setIsSliderVisible} />
                     : <AddTagCloset selectID={selectID} setIsSliderVisible={setIsSliderVisible} />

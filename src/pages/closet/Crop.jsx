@@ -44,6 +44,9 @@ function Crop() {
         });
       };
       reader.readAsDataURL(file);
+    } else {
+      alert('請先上傳圖片！');
+      navigate('/Closet');
     }
   }, [location]);
 
@@ -119,7 +122,7 @@ function Crop() {
         </div>
 
 
-        <div id="progress" className="fixed-bottom border-top d-flex justify-content-between" style={{ height: '55px' }}>
+        <div id="progress" className="fixed-bottom border-top d-flex justify-content-between" style={{ height: '55px', width: '375px' }}>
           <a href="./Closet" className="btn text-xs m-3 px-3 rounded-pill text-light" style={{ backgroundColor: 'var(--color-highlight)' }}>上一步</a>
           <div onClick={handleNextStep} className="btn m-3 px-3 rounded-pill text-light" style={{ backgroundColor: 'var(--color-highlight)' }}>下一步</div>
         </div>

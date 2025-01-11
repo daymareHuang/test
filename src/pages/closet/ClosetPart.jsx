@@ -13,9 +13,25 @@ function ClosetPart() {
             '未知分類';
 
   const [items, setItems] = useState([]);
+
   useEffect(() => {
-    async function getData() {
-      const url = 'http://localhost/Dressify/public/api/items';
+    // 從 localStorage 取得儲存的用戶資料
+    const storedData = localStorage.getItem('user');
+
+    if (storedData) {
+      const userObj = JSON.parse(storedData);
+
+      // 提取 UID
+      const UID = userObj.UID;
+      // console.log(UID);
+      getData(UID);
+    } else {
+      alert('請先登入！');
+      navigate('/Login')
+    }
+
+    async function getData(UID) {
+      const url = `http://127.0.0.1:8000/api/items/${UID}`;
       try {
         const response = await fetch(url);
         const jsonObj = await response.json();
@@ -25,19 +41,18 @@ function ClosetPart() {
         console.error("Error fetching data:", error);
       }
     }
-    getData();
   }, [items]);
   return (
     <ClosetLayoutN>
-      <div className="container" >
+      <div className="container">
         {/* <!-- header --> */}
         <div className="fixed-top bg-light my-5" style={{ top: '14px' }}>
-          <div className="d-flex justify-content-between align-items-center border-bottom">
+          <div className="d-flex justify-content-between align-items-center border-bottom" style={{ width: '375px' }}>
             <div className="px-4 p-3 text-m"><b>{partTitle}</b></div>
-            <a href="/Closet" className="px-4"><img src="/src/assets/img/icon/cross-circle.svg" style={{ width: '25px' }} alt="cancel" /></a>
+            <a href="/Closet" className="px-3"><img src="/src/assets/img/icon/cross-circle.svg" style={{ width: '25px' }} alt="cancel" /></a>
           </div>
         </div>
-        
+
         <div style={{ paddingTop: '48px' }}></div>
 
         <div className="container-fluid">

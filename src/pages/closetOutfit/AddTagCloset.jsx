@@ -28,10 +28,25 @@ function AddTagCloset({ setIsSliderVisible, selectID }) {
 
     // API 拿衣櫃資料
     useEffect(() => {
-        let allData = ''
+
+        // 取得使用者ID
+        let uid = null;
+
+        const storageData = localStorage.getItem('user');
+        if (storageData) {
+            let userDate = JSON.parse(storageData);
+            uid = userDate.UID
+            // uid = 2
+        }
+
+        if(uid){
+            console.log(uid);
+            callAPI()
+        }
+
         async function callAPI() {
-            // let response = await fetch("../../public/clothes.json");
-            let response = await fetch("http://localhost/Dressify/public/api/closet");
+            // let response = await fetch("http://127.0.0.1:8000/api/closet");
+            let response = await fetch(`http://127.0.0.1:8000/api/closet/${uid}`);
             let json = await response.json();
             jsonData.current = json
 
@@ -40,7 +55,7 @@ function AddTagCloset({ setIsSliderVisible, selectID }) {
             setShoeItem(json.filter((item) => { return item.PartID == 3 }))
             setAccItem(json.filter((item) => { return item.PartID == 4 }))
         }
-        callAPI()
+        
         return (() => {
         })
     }, [])
@@ -75,11 +90,13 @@ function AddTagCloset({ setIsSliderVisible, selectID }) {
 
     // 選擇單品
     function handleSelect(event) {
+        console.log(tagList);
+
         tagList[selectID].inCloset = 1;
         tagList[selectID].itemID = event.target.getAttribute('dataitemid');
         tagList[selectID].content = event.target.getAttribute('datatitle');
         console.log(tagList[selectID]);
-        
+
         setIsSliderVisible(false);
     }
 

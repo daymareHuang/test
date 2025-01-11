@@ -25,9 +25,9 @@ function ClosetHeader({ isActive }) {
   }
   return (
     <>
-      <div className="container-fluid fixed-top bg-light my-5" style={{ top: '14px' }}>
+      <div className="fixed-top bg-light my-5" style={{ top: '14px', width: '375px'}}>
         <div className="row align-items-center">
-          <a href="/Closet" className="text-xs col-2 ms-2 my-2 btn rounded-pill ssbtn"
+          <a href="/Closet" className="text-xs col-2 ms-3 my-2 btn rounded-pill ssbtn"
             style={{ backgroundColor: activeBtn === '單品' ? 'var(--color-highlight)' : 'var(--color-base)', color: activeBtn === '單品' ? 'var(--color-white)' : 'var(--color-black)' }}
             onClick={() => { handleBtnActive('單品') }}>
             <b>單品</b>
@@ -42,7 +42,7 @@ function ClosetHeader({ isActive }) {
             <img src="src/assets/img/icon/add.svg" style={{ width: '25px' }} alt="add" onClick={handleClickAdd} />
           </a>
 
-          <a className="col-1 ms-1">
+          <a className="col-1">
             <img src="src/assets/img/icon/pic-search.svg" style={{ width: '25px' }} alt="search" onClick={handleClickSearch} />
           </a>
 

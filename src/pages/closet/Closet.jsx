@@ -1,11 +1,29 @@
 import React, { useEffect, useState } from 'react'
 import ClosetLayout from '../../layouts/ClosetLayout'
+import { useNavigate } from 'react-router-dom';
 
 function Closet() {
   const [items, setItems] = useState([]);
+  const navigate = useNavigate();
+
   useEffect(() => {
-    async function getData() {
-      const url = 'http://localhost/Dressify/public/api/items';
+    // 從 localStorage 取得儲存的用戶資料
+    const storedData = localStorage.getItem('user');
+
+    if (storedData) {
+      const userObj = JSON.parse(storedData);
+
+      // 提取 UID
+      const UID = userObj.UID;
+      // console.log(UID);
+      getData(UID);
+    } else {
+      alert('請先登入！');
+      navigate('/Login')
+    }
+
+    async function getData(UID) {
+      const url = `http://127.0.0.1:8000/api/items/${UID}`;
       try {
         const response = await fetch(url);
         const jsonObj = await response.json();
@@ -15,12 +33,12 @@ function Closet() {
         console.error("Error fetching data:", error);
       }
     }
-    getData();
-  }, [items])
+
+  }, [])
 
   return (
     <ClosetLayout isActive="單品">
-      <div style={{ paddingTop: '92px' }}></div>
+      <div style={{ paddingTop: '94px' }}></div>
 
       <div className="pb-3 mb-3" style={{ height: '540px', overflowY: 'auto' }}>
         {/* <!-- 部位 --> */}
@@ -35,8 +53,8 @@ function Closet() {
                 <a key={item.ItemID} href={`/ClosetCheckSingle/${item.ItemID}`} className="text-light">
                   <img
                     className="border rounded my-2 me-4"
-                    width="125px"
-                    height="125px"
+                    width="120px"
+                    height="120px"
                     src={item.EditedPhoto || `/items/item${item.Type}.svg`} // 動態圖片
                   />
                 </a>
@@ -44,7 +62,7 @@ function Closet() {
           ) : (
             <p>Loading...</p>
           )}
-          <a href="/ClosetPart/1"><img src="src/assets/img/icon/dot-pending.svg" style={{ width: '26px' }} alt="more" /></a>
+          <a href="/ClosetPart/1"><img src="src/assets/img/icon/dot-pending.svg" style={{ width: '24px' }} alt="more" /></a>
         </div>
 
         {/* <!-- 部位2 下身 --> */}
@@ -59,8 +77,8 @@ function Closet() {
                 <a key={item.ItemID} href={`/ClosetCheckSingle/${item.ItemID}`} className="text-light">
                   <img
                     className="border rounded my-2 me-4"
-                    width="125px"
-                    height="125px"
+                    width="120px"
+                    height="120px"
                     src={item.EditedPhoto || `/items/item${item.Type}.svg`}
                   />
                 </a>
@@ -83,8 +101,8 @@ function Closet() {
                 <a key={item.ItemID} href={`/ClosetCheckSingle/${item.ItemID}`} className="text-light">
                   <img
                     className="border rounded my-2 me-4"
-                    width="125px"
-                    height="125px"
+                    width="120px"
+                    height="120px"
                     src={item.EditedPhoto || `/items/item${item.Type}.svg`}
                   />
                 </a>
@@ -107,8 +125,8 @@ function Closet() {
                 <a key={item.ItemID} href={`/ClosetCheckSingle/${item.ItemID}`} className="text-light">
                   <img
                     className="border rounded my-2 me-4"
-                    width="125px"
-                    height="125px"
+                    width="120px"
+                    height="120px"
                     src={item.EditedPhoto || `/items/item${item.Type}.svg`}
                   />
                 </a>

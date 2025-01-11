@@ -1,11 +1,29 @@
 import React, { useEffect, useState } from 'react'
 import ClosetLayout from '../../layouts/ClosetLayout'
+import { useNavigate } from 'react-router-dom';
 
 function ClosetMatch() {
   const [outfits, setOutfits] = useState([]);
+  const navigate = useNavigate();
+  
   useEffect(() => {
-    async function getData() {
-      const url = 'http://localhost/Dressify/public/api/outfits';
+    // 從 localStorage 取得儲存的用戶資料
+    const storedData = localStorage.getItem('user');
+
+    if (storedData) {
+      const userObj = JSON.parse(storedData);
+
+      // 提取 UID
+      const UID = userObj.UID;
+      // console.log(UID);
+      getData(UID);
+    } else {
+      alert('請先登入！');
+      navigate('/Login');
+    }
+
+    async function getData(UID) {
+      const url = `http://127.0.0.1:8000/api/outfits/${UID}`;
       try {
         const response = await fetch(url);
         const jsonObj = await response.json();
@@ -15,7 +33,7 @@ function ClosetMatch() {
         console.error("Error fetching data:", error);
       }
     }
-    getData();
+    
   }, [])
 
   return (
@@ -24,10 +42,12 @@ function ClosetMatch() {
       <div className='row container'>
         {outfits.length > 0 ? (
           outfits.map((outfit) => (
-            <div key={outfit.OutfitID} className="col-6 pt-4 px-4">
-              <p className="mb-1 ps-1 md-18">{outfit.Title}</p>
-              <img className="border rounded" src={outfit.EditedPhoto} width="160" height="220" alt="loading..." />
-            </div>
+            <a href={`http://localhost:5173/ClosetMatch/${outfit.OutfitID}`} key={outfit.OutfitID} className="col-6 pt-4 px-4 text-decoration-none text-dark">
+              <div style={{filter: outfit.FilterStyle}} >
+                <p className="mb-1 ps-1 md-18">{outfit.Title}</p>
+                <img className="border rounded" src={outfit.EditedPhoto} width="160" height="220" alt="loading..." />
+              </div>
+            </a>
           )
           )
         ) : <p>Loading...</p>

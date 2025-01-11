@@ -4,7 +4,7 @@ import '../../css/Dressify.css'
 import '../../css/dresswall.css'
 import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Tabs, Tab } from 'react-bootstrap';
+import { Spinner, Tabs, Tab } from 'react-bootstrap';
 import Post from '../../components/Post'
 import MyLayout from '../../layouts/MyLayout';
 import axios from 'axios';
@@ -13,35 +13,50 @@ import axios from 'axios';
 function Dresswall() {
     const [womenPosts, setWomenPosts] = useState([]);
     const [menPosts, setMenPosts] = useState([]);
+    const [loading, setLoading] = useState(false);
 
-// 拿女性的post最新五個
-    useEffect(()=>{
-        const getwomenpost = async () =>{
-            try{
-                const response = await axios.get('http://localhost/Dressify/public/api/getwomenpost');
-                // console.log(response.data);
+    // 拿取localstorage登入的是誰
+    const data = JSON.parse(localStorage.getItem('user'))
+
+    // 拿女性的post最新五個
+    useEffect(() => {
+        setLoading(true)
+        const getwomenpost = async () => {
+            try {
+                const response = await axios.post('http://127.0.0.1:8000/api/getwomenpost', {
+                    UID: data.UID
+                });
+                // console.log(response.data)
                 setWomenPosts(response.data);
-            } 
-            catch(error){
-                console.error('ERROR: ', error.message);
+                setLoading(false)
+            }
+            catch (error) {
+                console.error('ERROR: ', error.response.data);
+                setLoading(false)
             }
         };
         getwomenpost();
-    },[])
+    }, [])
 
     // 拿男性的post最新五個
-    useEffect(()=>{
-        const getmenpost = async ()=>{
-            try{
-                const response = await axios.get('http://localhost/Dressify/public/api/getmenpost')
+    useEffect(() => {
+        setLoading(true)
+        const getmenpost = async () => {
+            try {
+                const response = await axios.post('http://127.0.0.1:8000/api/getmenpost', {
+                    UID: data.UID
+                })
+                // console.log(response.data)
                 setMenPosts(response.data)
+                setLoading(false)
             }
-            catch(error){
+            catch (error) {
                 console.error('ERROR: ', error.message);
+                setLoading(false)
             }
         }
         getmenpost();
-    },[])    
+    }, [])
 
     return (
         <MyLayout>
@@ -54,29 +69,49 @@ function Dresswall() {
                     {/* <!-- GenderTab --> */}
                     {/* 要能夠越滑出現越多 */}
                     <Tabs defaultActiveKey="Men" id="genderTab" className="mb-3 justify-content-center text-m" variant="underline">
+                        {/* Men tab content */}
                         <Tab eventKey="Men" title="Men" className='text-black'>
-                            {/* <!-- post --> */}
-                            {/* <Post name="David" /> */}
-
-                            {/* <!-- post --> */}
-                            {/* <Post name="KaiKai" /> */}
-                            {menPosts.map((post,key) => (
-                                <Post name={post.UserName} avatar={post.Avatar} postpic={post.EditedPhoto} key={key} />
-                            ))}
-                        </Tab>
-                        <Tab eventKey="Women" title="Women">
-                            {/* <!-- post --> */}
-                            {/* <Post name="Xiaosyuan" /> */}
-
-                            {/* <!-- post --> */}
-                            {/* <Post name="Xiaoian" /> */}
-                            {
-                                womenPosts.map((post,key)=>(
-                                    <Post name={post.UserName} avatar={post.Avatar} postpic={post.EditedPhoto} key={key}/>
-                                ))
+                            {loading ?
+                                (<div className="d-flex justify-content-center"><Spinner animation="border" role="status" variant="secondary" /></div>)
+                                :
+                                (menPosts.map((post, key) => (
+                                    post.UserLike ?
+                                        ( post.UserKeep? 
+                                            (<Post stylefilter={post.FilterStyle} authorID={post.AuthorID} name={post.UserName} avatar={post.Avatar} postpic={post.EditedPhoto} postID={post.PostID} userlike={true} userkeep={true} key={key} />)
+                                            :
+                                            (<Post stylefilter={post.FilterStyle}  authorID={post.AuthorID} name={post.UserName} avatar={post.Avatar} postpic={post.EditedPhoto} postID={post.PostID} userlike={true} userkeep={false} key={key} />)
+                                        )
+                                        :
+                                        (post.UserKeep? 
+                                            (<Post stylefilter={post.FilterStyle}  authorID={post.AuthorID} name={post.UserName} avatar={post.Avatar} postpic={post.EditedPhoto} postID={post.PostID} userlike={false} userkeep={true} key={key} />)
+                                            :
+                                            (<Post stylefilter={post.FilterStyle}  authorID={post.AuthorID} name={post.UserName} avatar={post.Avatar} postpic={post.EditedPhoto} postID={post.PostID} userlike={false} userkeep={false} key={key} />)
+                                        )
+                                )))
                             }
                         </Tab>
-                        
+                        {/* Women Tab content */}
+                        <Tab eventKey="Women" title="Women">
+                            {loading ?
+                                (<div className="d-flex justify-content-center"><Spinner animation="border" role="status" variant="secondary" /></div>)
+                                :
+                                (womenPosts.map((post, key) => (
+                                    post.UserLike ?
+                                        ( post.UserKeep? 
+                                            (<Post stylefilter={post.FilterStyle} authorID={post.AuthorID} name={post.UserName} avatar={post.Avatar} postpic={post.EditedPhoto} postID={post.PostID} userlike={true} userkeep={true} key={key} />)
+                                            :
+                                            (<Post stylefilter={post.FilterStyle} authorID={post.AuthorID} name={post.UserName} avatar={post.Avatar} postpic={post.EditedPhoto} postID={post.PostID} userlike={true} userkeep={false} key={key} />)
+                                        )
+                                        :
+                                        (post.UserKeep? 
+                                            (<Post stylefilter={post.FilterStyle} authorID={post.AuthorID} name={post.UserName} avatar={post.Avatar} postpic={post.EditedPhoto} postID={post.PostID} userlike={false} userkeep={true} key={key} />)
+                                            :
+                                            (<Post stylefilter={post.FilterStyle} authorID={post.AuthorID} name={post.UserName} avatar={post.Avatar} postpic={post.EditedPhoto} postID={post.PostID} userlike={false} userkeep={false} key={key} />)
+                                        )
+                                )))
+                            }
+                        </Tab>
+
 
                     </Tabs>
 

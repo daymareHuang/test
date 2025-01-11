@@ -28,10 +28,11 @@ Black_#3b3a38
 
 /* user 大頭照大的版本 */
 .userImgBig {
+    aspect-ratio: 1 / 1; /* 固定為正方形比例 */
+    border-radius: 50%;
     height: 60px;
     width: 60px;
     object-fit: cover;
-    border-radius: 50%;
 }
 
 /* user 大頭照小的版本 */
@@ -71,9 +72,15 @@ Black_#3b3a38
     color: #ffffff;
 }
 
-.btn-highlight:active {
-    background-color: #ae7a62;
+.btn-highlight:hover{
+    background-color: var(--color-second);
+    border: 1px solid var(--color-black);
+    color: var(--color-black)
+}
 
+
+.btn-highlight:active {
+    background-color: var(--color-highlight);
 }
 
 /* button 黃底 */
@@ -81,6 +88,11 @@ Black_#3b3a38
     background-color: var(--color-second);
     border: 1px solid var(--color-black);
     color: var(--color-black)
+}
+
+.btn-normal:hover{
+    background-color: var(--color-highlight);
+    color: var(--color-white)
 }
 
 /* background color setting */

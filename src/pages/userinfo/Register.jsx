@@ -1,12 +1,10 @@
-import { React, useState } from "react"
-import MyLayout from '../../layouts/MyLayout'
-import { useNavigate } from 'react-router-dom'
-import axios from '../../api/axios'
-import 'bootstrap/dist/css/bootstrap.min.css'
-import '../../css/Dressify.css'
-import AvatarUpload from "./AvatarUpload"
-
-// const apiUrl = 'http://localhost/Dressify/public/api/member';
+import { React, useState } from "react";
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import '../../css/Dressify.css';
+import AvatarUpload from "./AvatarUpload";
+import MyLayoutBlank from "../../layouts/MyLayoutBlank";
 
 function Register() {
   const navigate = useNavigate(); // 用於導航到其他頁面
@@ -27,7 +25,11 @@ function Register() {
 
   // 性別選擇
   const selectGender = (gender) => {
-    setSelectedGender(gender);  // 只更新性別，無需進行驗證
+    if (selectedGender === gender) {
+      setSelectedGender(null);  // 如果點擊的是已選擇的性別，則取消選擇
+    } else {
+      setSelectedGender(gender);  // 否則選擇該性別
+    }
   };
 
   // 表單驗證
@@ -40,9 +42,10 @@ function Register() {
     return passwordPattern.test(password);
   };
 
-  // 头像更改处理
+  // 上傳頭像
   const handleAvatarChange = (base64Image) => {
-    setAvatar(base64Image); // 更新 Avatar 为 BASE64 字符串
+    setAvatar(base64Image); // 更新 Avatar 為 BASE64 字串
+    console.log(base64Image);
   };
 
   // 註冊表單提交處理
@@ -70,23 +73,25 @@ function Register() {
       return;
     }
 
+    // 將性別轉換為數字
+    const gender = selectedGender === 'male' ? 1 : selectedGender === 'female' ? 0 : null;
+
     // 使用者送出的資料
     const formData = new FormData();
     formData.append('Email', email);
     formData.append('UserName', username);
     formData.append('UserPWD', password);
-    formData.append('Gender', selectedGender);
-    console.log(formData.get('Email'));
-    if (avatar) {
-      formData.append('Avatar', avatar);  // 将 BASE64 字符串加入表单数据
-    }
+    formData.append('Gender', gender);
 
+    // 如果有提供頭像，將 Base64 字符串加入表單資料
     if (avatar) {
-      formData.append('Avatar', avatar);  // 将 BASE64 字符串加入表单数据
+      formData.append('Avatar', avatar);
+    } else {
+      formData.append('Avatar', '');  // 如果沒有提供頭像，則傳遞空字串
     }
-
+    console.log('Avatar:', avatar);
     try {
-      const response = await axios.post('http://localhost:8000/api/register', formData, {
+      const response = await axios.post('http://127.0.0.1:8000/api/register', formData, {
         headers: {
           'Content-Type': 'multipart/form-data'  // 設置為 multipart/form-data
         }
@@ -102,12 +107,13 @@ function Register() {
         setErrorMessage('註冊失敗，請再試一次。');
       }
       console.error('Error registering:', error);
+      console.error('Error response:', error.response);
     }
   };
 
   return (
-    <MyLayout>
-      <div className="container-fluid" style={{ marginTop: '65px', marginBottom: '55px' }}>
+    <MyLayoutBlank>
+      <div className="container-fluid" style={{ marginTop: '40px', marginBottom: '55px' }}>
         <div className="container-fluid py-3 my-4" style={{ backgroundColor: '#F8F9F3' }}>
           <div className="container-fluid text-center">
             <p className="text-xl"><b>註冊會員</b></p>
@@ -125,7 +131,7 @@ function Register() {
                   type="email"
                   className="form-control"
                   id="userEmail"
-                  placeholder="請輸入郵件，完成註冊後不可修改"
+                  placeholder="請輸入郵件，完成註冊後不可更改"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required />
@@ -138,11 +144,11 @@ function Register() {
                   type="text"
                   className="form-control"
                   id="userName"
-                  placeholder="請輸入使用者名稱，完成註冊後不可修改"
+                  placeholder="請輸入使用者名稱"
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
                   required />
-                <label htmlFor="userIdDescription" className="text-xs">包含英文字母（大小寫區分）、數字及特殊符號</label>
+                <label htmlFor="userIdDescription" className="text-xs mt-2">可使用英文字母（大小寫區分）、中文、數字及特殊符號</label>
               </div>
 
               {/* 密碼 */}
@@ -152,7 +158,7 @@ function Register() {
                   <input
                     type={isPasswordVisible ? 'text' : 'password'}
                     className="form-control"
-                    id="userPwd"
+                    id="UserPWD"
                     placeholder="請輸入密碼"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
@@ -189,7 +195,7 @@ function Register() {
                     }}
                     onClick={togglePasswordVisibility} />
                 </div>
-                <label htmlFor="userPwdDescription" className="text-xs">至少8個字元，包含英文字母（大小寫區分）及數字</label>
+                <label htmlFor="userPwdDescription" className="text-xs mt-2">至少8個字元，包含英文字母（大小寫區分）及數字</label>
               </div>
 
               {/* 性別選擇 */}
@@ -204,6 +210,7 @@ function Register() {
                       border: '1px solid #3b3a38'
                     }}
                     type="button"
+                    id="male"
                     onClick={() => selectGender('male')}>
                     男性
                   </button>
@@ -215,6 +222,7 @@ function Register() {
                       border: '1px solid #3b3a38'
                     }}
                     type="button"
+                    id="female"
                     onClick={() => selectGender('female')}>
                     女性
                   </button>
@@ -224,7 +232,11 @@ function Register() {
               {/* 頭像上傳 */}
               <div className="mt-3">
                 <label htmlFor="userAvatar" className="form-label">上傳頭貼</label>
-                <AvatarUpload onChange={handleAvatarChange} />
+                <br />
+                <div className="image-container">
+                  {/* 使用 AddAvatar 组件 */}
+                  <AvatarUpload/>
+                </div>
               </div>
 
               {/* 顯示錯誤信息 */}
@@ -237,7 +249,7 @@ function Register() {
               {/* 提交按鈕 */}
               <button
                 type="submit"
-                className="btn btn-lg rounded-3 w-100 py-2 mt-2"
+                className="btn btn-lg rounded-3 w-100 py-2 mt-3"
                 style={{ backgroundColor: '#ebe3e0' }}
                 disabled={isLoading}>
                 {isLoading ? '註冊中...' : '註冊會員'}
@@ -245,8 +257,8 @@ function Register() {
             </form>
           </div>
         </div>
-      </div >
-    </MyLayout >
+      </div>
+    </MyLayoutBlank>
   );
 }
 

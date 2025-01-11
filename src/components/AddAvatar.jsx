@@ -12,26 +12,10 @@ function AddAvatar() {
     const [image, setImage] = useState(null); // 儲存使用者上傳的照片
     const [croppedImage, setCroppedImage] = useState(null); // 儲存已編輯的圖片
     const cropperRef = useRef(null);
-
-
-    // 使用者資料獲取
-    useEffect(()=>{
-
-        const userinfo = async () => {
-            try {
-                const response = await axios.post('http://localhost/Dressify/public/api/userself', {
-                    UID: 1,
-                });
-                 setImage(response.data[0].Avatar);
-            }
-            catch (error) {
-                console.error('ERROR: ', error.message);
-            }
-        }
-        userinfo();
-    },[])
-
-
+    const [loading, setLoading] = useState(true);
+    const [userData, setUserData] = useState({
+        avatar: '',
+    });
     // Toggle upload modal visibility
     const handleShowUploadModal = () => setShowUploadModal(true);
     const handleCloseUploadModal = () => setShowUploadModal(false);
@@ -40,7 +24,60 @@ function AddAvatar() {
     const handleShowEditModal = () => setShowEditModal(true);
     const handleCloseEditModal = () => setShowEditModal(false);
 
-    // Handle image upload
+    // 拿使用者的頭貼
+    // useEffect(()=>{
+    //     const userinfo = async () => {
+    //         try {
+    //             const response = await axios.post('http://127.0.0.1:8000/api/userself', {
+    //                 UID: 1,
+    //             });
+    //              setImage(response.data[0].Avatar);
+    //         }
+    //         catch (error) {
+    //             console.error('ERROR: ', error.message);
+    //         }
+    //     }
+    //     userinfo();
+    // },[])
+
+    useEffect(() => {
+        // 從 localStorage 取得儲存的用戶資料
+        const storedData = localStorage.getItem('user');
+
+        if (storedData) {
+            // 解析 JSON 字串為物件
+            const userObj = JSON.parse(storedData);
+
+            // 提取 UID
+            const UID = userObj.UID;
+            // 如果 UID 存在，發送請求到後端 API 獲取 UserName 和 Avatar
+            if (UID) {
+                axios.get(`http://127.0.0.1:8000/api/user-info/${UID}`)
+                    .then(response => {
+                        // 請求成功後，更新 userData 狀態
+                        const { UserName, Avatar } = response.data;
+                        setUserData({
+                            avatar: Avatar,
+                            username: UserName
+                        });
+                        setLoading(false);  // 更新完資料後，結束載入狀態
+                    })
+                    .catch(error => {
+                        console.error('取得用戶資料時發生錯誤:', error);
+                        setLoading(false);  // 請求失敗時也結束載入狀態
+                    });
+            } else {
+                console.error('從儲存的資料中找不到 UID.');
+                setLoading(false);  // 如果 UID 不存在，結束載入狀態
+            }
+        } else {
+            console.error('在 localStorage 中找不到用戶資料.');
+            setLoading(false);  // 沒有資料的情況下結束載入狀態
+        }
+    }, []);
+
+
+    // 圖片上傳
     const handleImageChange = (event) => {
         const file = event.target.files[0];
         if (file) {
@@ -54,15 +91,6 @@ function AddAvatar() {
         }
     };
 
-    // Handle crop button click
-    const handleCrop = () => {
-        const cropper = cropperRef.current?.cropper;
-        if (cropper) {
-            setCroppedImage(cropper.getCroppedCanvas().toDataURL());
-            handleCloseEditModal(); // 編輯後關閉視窗
-        }
-    };
-
     // Handle avatar click (show upload or edit modal based on image existence)
     const handleAvatarClick = () => {
         if (image || croppedImage) {
@@ -72,7 +100,7 @@ function AddAvatar() {
         }
     };
 
-    // Handle back to upload modal
+    // 上一步
     const handleBackToUpload = () => {
         setShowEditModal(false); // Close the edit modal
         setImage(null); // Reset the uploaded image (to allow re-uploading)
@@ -80,26 +108,47 @@ function AddAvatar() {
         handleShowUploadModal(); // Open upload modal again
     };
 
-    const [userData, setUserData] = useState({
-        avatar: '',
-        username: ''
-    });
+    // 完成按鈕的動作
+    const handleCrop = () => {
+        const cropper = cropperRef.current?.cropper;
+        if (cropper) {
+            const croppedDataUrl = cropper.getCroppedCanvas().toDataURL();
+            setCroppedImage(croppedDataUrl); // 設定裁剪後的圖片
+            // console.log("Cropped Data URL:", croppedDataUrl);
+            // 關閉編輯視窗
+            handleCloseEditModal();
 
-    // 使用 useEffect 获取数据
-    useEffect(() => {
-        // 使用 axios 从后端获取用户信息
-        axios.get('http://localhost:8000/api/user-info')
-            .then(response => {
-                // 如果请求成功，更新状态
-                setUserData({
-                    avatar: response.data.Avatar,  // 确保字段名称与返回的数据一致
-                    username: response.data.UserName // 同上
-                });
-            })
-            .catch(error => {
-                console.error('Error fetching user data:', error);
-            });
-    }, []);
+            // 傳送裁剪後的圖片到後端
+            // 從 localStorage 取得儲存的用戶資料
+            const storedData = localStorage.getItem('user');
+            if (storedData) {
+                // 解析 JSON 字串為物件
+                const userObj = JSON.parse(storedData);
+
+                // 提取 UID
+                const UID = userObj.UID;
+
+                if (UID && croppedDataUrl) {
+                    // 傳送 POST 請求到 Laravel API 更新 avatar
+                    axios.post(`http://127.0.0.1:8000/api/update-avatar/${UID}`, {
+                        avatar: croppedDataUrl
+                    }, {
+                        headers: {
+                            'Content-Type': 'application/json' // 確保請求的內容類型是 JSON
+                        }
+                    })
+                        .then(response => {
+                            console.log('成功更新頭像', response.data);
+                            // 可選：更新 localStorage 或 userData 狀態
+                            window.location.href = window.location.href;
+                        })
+                        .catch(error => {
+                            console.error('更新頭像時發生錯誤:', error);
+                        });
+                }
+            }
+        }
+    };
 
     return (
         <div>

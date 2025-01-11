@@ -5,13 +5,31 @@ import '../../css/Dressify.css'
 import CurrentDate from './CurrentDate'
 
 const weatherIcons = {
-    '晴天': './src/assets/img/weatherIcon/sunny.png',
-    '晴時多雲': './src/assets/img/weatherIcon/sun.png',
-    '多雲': './src/assets/img/weatherIcon/cloudy.png',
-    '雷陣雨': './src/assets/img/weatherIcon/storm.png',
-    '大雨': './src/assets/img/weatherIcon/rainy.png',
-    '陰短暫雨': './src/assets/img/weatherIcon/cloudy-rainy.png',
-    '多雲短暫雨': './src/assets/img/weatherIcon/cloudy-rainy.png',
+    '晴天': './src/assets/img/weatherIcon/01.svg',
+    '晴時多雲': './src/assets/img/weatherIcon/02.svg',
+    '多雲時晴': './src/assets/img/weatherIcon/03.svg',
+    '多雲': './src/assets/img/weatherIcon/04.svg',
+    '多雲時陰': './src/assets/img/weatherIcon/05.svg',
+    '陰時多雲': './src/assets/img/weatherIcon/06.svg',
+    '陰天': './src/assets/img/weatherIcon/07.svg',
+    '多雲陣雨': './src/assets/img/weatherIcon/08.svg',
+    '多雲短暫雨': './src/assets/img/weatherIcon/08.svg',
+    '多雲短暫陣雨': './src/assets/img/weatherIcon/08.svg',
+    '短暫陣雨': './src/assets/img/weatherIcon/08.svg',
+    '多雲時晴短暫陣雨': './src/assets/img/weatherIcon/08.svg',
+    '多雲時晴短暫雨': './src/assets/img/weatherIcon/08.svg',
+    '晴時多雲短暫陣雨': './src/assets/img/weatherIcon/08.svg',
+    '晴短暫陣雨': './src/assets/img/weatherIcon/08.svg',
+    '短暫雨': './src/assets/img/weatherIcon/08.svg',
+    '多雲時陰短暫雨': './src/assets/img/weatherIcon/09.svg',
+    '多雲時陰短暫陣雨': './src/assets/img/weatherIcon/09.svg',
+    '雨天': './src/assets/img/weatherIcon/10.svg',
+    '晴午後陰短暫雨': './src/assets/img/weatherIcon/10.svg',
+    '晴午後陰短暫陣雨': './src/assets/img/weatherIcon/10.svg',
+    '陰短暫雨': './src/assets/img/weatherIcon/10.svg',
+    '陰短暫陣雨': './src/assets/img/weatherIcon/10.svg',
+    '陰午後短暫陣雨': './src/assets/img/weatherIcon/10.svg',
+    
 };
 
 function CurrentWeather() {
@@ -55,7 +73,7 @@ function CurrentWeather() {
     }, []);
 
     if (loading) {
-        return <div>载入中...</div>;
+        return <div>Loading...</div>;
     }
 
     return (
