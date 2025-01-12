@@ -32,7 +32,7 @@ function Wallsearchresult() {
       setLoading(true)
       const getresult = async () => {
         try {
-          const response = await axios.post('http://127.0.0.1:8000/api/search', {
+          const response = await axios.post('https://dressify-backend-47cc2f5ae409.herokuapp.com/api/search', {
             keyword: data,
           })
           // console.log(response.data)
@@ -54,7 +54,7 @@ function Wallsearchresult() {
       setLoading(true);
       const getcomplicated = async () => {
         try {
-          const response = await axios.post('http://127.0.0.1:8000/api/complicatedsearch', {
+          const response = await axios.post('https://dressify-backend-47cc2f5ae409.herokuapp.com/api/complicatedsearch', {
             clothesType: buttonFormData.clothesType,
             color: buttonFormData.color,
             brand: buttonFormData.brand,
@@ -81,7 +81,7 @@ function Wallsearchresult() {
       setLoading(true);
       const getcomplicated = async () => {
         try {
-          const response = await axios.post('http://127.0.0.1:8000/api/complicatedsearch', {
+          const response = await axios.post('https://dressify-backend-47cc2f5ae409.herokuapp.com/api/complicatedsearch', {
             clothesType: formData.clothesType,
             color: formData.color,
             brand: formData.brand,

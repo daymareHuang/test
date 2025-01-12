@@ -27,7 +27,7 @@ function Otherpage() {
     useEffect(() => {
         const getUserInfo = async () => {
             try {
-                const response = await axios.post('http://127.0.0.1:8000/api/otherppl', {
+                const response = await axios.post('https://dressify-backend-47cc2f5ae409.herokuapp.com/api/otherppl', {
                     UID: authorID,
                 })
                 // console.log(response.data[0])
@@ -45,7 +45,7 @@ function Otherpage() {
     useEffect(() => {
         const checkFollow = async () => {
             try {
-                const response = await axios.post('http://127.0.0.1:8000/api/checkfollow', {
+                const response = await axios.post('https://dressify-backend-47cc2f5ae409.herokuapp.com/api/checkfollow', {
                     authorID: authorID,
                     UID: data.UID,
                 })
@@ -67,7 +67,7 @@ function Otherpage() {
     useEffect(() => {
         const getpostNum = async () => {
             try {
-                const response = await axios.post('http://127.0.0.1:8000/api/getpostnum', {
+                const response = await axios.post('https://dressify-backend-47cc2f5ae409.herokuapp.com/api/getpostnum', {
                     UID: authorID,
                 })
                 // console.log(response.data);
@@ -84,7 +84,7 @@ function Otherpage() {
     useEffect(() => {
         const getFanNum = async () => {
             try {
-                const response = await axios.post('http://127.0.0.1:8000/api/getfannum', {
+                const response = await axios.post('https://dressify-backend-47cc2f5ae409.herokuapp.com/api/getfannum', {
                     UID: authorID,
                 })
                 //  console.log(response.data[0].FanNumber)
@@ -102,7 +102,7 @@ function Otherpage() {
     useEffect(() => {
         const getuserpost = async () => {
             try {
-                const response = await axios.post('http://127.0.0.1:8000/api/getuserpost', {
+                const response = await axios.post('https://dressify-backend-47cc2f5ae409.herokuapp.com/api/getuserpost', {
                     UID: authorID,
                 })
                 setUserPosts(response.data)
@@ -117,7 +117,7 @@ function Otherpage() {
     useEffect(() => {
         const getusercollect = async () => {
             try {
-                const response = await axios.post('http://127.0.0.1:8000/api/getusercollect', {
+                const response = await axios.post('https://dressify-backend-47cc2f5ae409.herokuapp.com/api/getusercollect', {
                     UID: authorID,
                 })
                 setUserCollects(response.data)
@@ -132,7 +132,7 @@ function Otherpage() {
     const handleClickFollow = () => {
         if (follow) {
             try {
-                const response = axios.post('http://127.0.0.1:8000/api/unfollow', {
+                const response = axios.post('https://dressify-backend-47cc2f5ae409.herokuapp.com/api/unfollow', {
                     authorID: authorID,
                     UID: data.UID
                 })
@@ -143,7 +143,7 @@ function Otherpage() {
             }
         } else {
             try {
-                const response = axios.post('http://127.0.0.1:8000/api/follow', {
+                const response = axios.post('https://dressify-backend-47cc2f5ae409.herokuapp.com/api/follow', {
                     authorID: authorID,
                     UID: data.UID
                 })

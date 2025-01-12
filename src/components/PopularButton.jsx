@@ -15,7 +15,7 @@ function PopularButton(props) {
     useEffect(() => {
       const topbrands = async () => {
         try {
-          const response = await axios.post('http://127.0.0.1:8000/api/getClothesTypeID',
+          const response = await axios.post('https://dressify-backend-47cc2f5ae409.herokuapp.com/api/getClothesTypeID',
             {clothesType: props.name,}
           )
           typeID= response.data[0].TypeID

@@ -51,7 +51,7 @@ function ClosetEditSingle() {
 
     if (Title !== '' && Type !== null) {
       // 使用fetch存入db中
-      const url = 'http://127.0.0.1:8000/api/item';
+      const url = 'https://dressify-backend-47cc2f5ae409.herokuapp.com/api/item';
       const response = await fetch(url, {
         method: 'post',
         body: JSON.stringify(inputObj),

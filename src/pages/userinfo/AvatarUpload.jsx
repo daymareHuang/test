@@ -39,7 +39,7 @@ function AvatarUpload() {
             const UID = userObj.UID;
             // 如果 UID 存在，發送請求到後端 API 獲取 UserName 和 Avatar
             if (UID) {
-                axios.get(`http://127.0.0.1:8000/api/user-info/${UID}`)
+                axios.get(`https://dressify-backend-47cc2f5ae409.herokuapp.com/api/user-info/${UID}`)
                     .then(response => {
                         // 請求成功後，更新 userData 狀態
                         const { UserName, Avatar } = response.data;
@@ -116,7 +116,7 @@ function AvatarUpload() {
 
                 if (UID && croppedDataUrl) {
                     // 傳送 POST 請求到 Laravel API 更新 avatar
-                    axios.post(`http://127.0.0.1:8000/api/update-avatar/${UID}`, {
+                    axios.post(`https://dressify-backend-47cc2f5ae409.herokuapp.com/api/update-avatar/${UID}`, {
                         avatar: croppedDataUrl
                     }, {
                         headers: {

@@ -22,7 +22,7 @@ function Post(props) {
     if (like) {
       
       try {
-        const response = axios.post('http://127.0.0.1:8000/api/unlike',
+        const response = axios.post('https://dressify-backend-47cc2f5ae409.herokuapp.com/api/unlike',
           {
             UID: data.UID,
             PostID: props.postID,
@@ -35,7 +35,7 @@ function Post(props) {
     else {
       
       try {
-        const response = axios.post('http://127.0.0.1:8000/api/like',
+        const response = axios.post('https://dressify-backend-47cc2f5ae409.herokuapp.com/api/like',
           {
             UID: data.UID,
             PostID: props.postID,
@@ -51,7 +51,7 @@ function Post(props) {
   // useEffect(() => {
   //   const likePost = async () => {
   //     try {
-  //       const response = await axios.post(like ? 'http://127.0.0.1:8000/api/like' : 'http://127.0.0.1:8000/api/unlike',
+  //       const response = await axios.post(like ? 'https://dressify-backend-47cc2f5ae409.herokuapp.com/api/like' : 'https://dressify-backend-47cc2f5ae409.herokuapp.com/api/unlike',
   //         {
   //           UID: data.UID,
   //           PostID: props.postID,
@@ -72,7 +72,7 @@ function Post(props) {
     if (keep) {
       
       try {
-        const response = axios.post('http://127.0.0.1:8000/api/uncollect',
+        const response = axios.post('https://dressify-backend-47cc2f5ae409.herokuapp.com/api/uncollect',
           {
             UID: data.UID,
             PostID: props.postID,
@@ -85,7 +85,7 @@ function Post(props) {
     else {
       
       try {
-        const response = axios.post('http://127.0.0.1:8000/api/collect',
+        const response = axios.post('https://dressify-backend-47cc2f5ae409.herokuapp.com/api/collect',
           {
             UID: data.UID,
             PostID: props.postID,

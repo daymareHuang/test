@@ -23,7 +23,7 @@ function ClosetMatch() {
     }
 
     async function getData(UID) {
-      const url = `http://127.0.0.1:8000/api/outfits/${UID}`;
+      const url = `https://dressify-backend-47cc2f5ae409.herokuapp.com/api/outfits/${UID}`;
       try {
         const response = await fetch(url);
         const jsonObj = await response.json();

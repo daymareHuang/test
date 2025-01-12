@@ -27,7 +27,7 @@ function OutfitCreated() {
     // 發佈貼文
     const handlePost = () => {
         try {
-            const response = axios.post('http://127.0.0.1:8000/api/PostPost', {
+            const response = axios.post('https://dressify-backend-47cc2f5ae409.herokuapp.com/api/PostPost', {
                 OutfitID: outFitID,
             });
 

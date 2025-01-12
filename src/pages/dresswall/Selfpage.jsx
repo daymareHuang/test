@@ -34,7 +34,7 @@ function Selfpage() {
     // useEffect(() => {
     //     const userinfo = async () => {
     //         try {
-    //             const response = await axios.post('http://127.0.0.1:8000/api/userself', {
+    //             const response = await axios.post('https://dressify-backend-47cc2f5ae409.herokuapp.com/api/userself', {
     //                 UID: data.UID,
     //             });
     //             // console.log('Response', response.data[0].UID);
@@ -56,7 +56,7 @@ function Selfpage() {
     useEffect(() => {
         const getpostNum = async () => {
             try {
-                const response = await axios.post('http://127.0.0.1:8000/api/getpostnum', {
+                const response = await axios.post('https://dressify-backend-47cc2f5ae409.herokuapp.com/api/getpostnum', {
                     UID: data.UID,
                 })
                 //  console.log(response.data);
@@ -73,7 +73,7 @@ function Selfpage() {
      useEffect(() => {
         const getFanNum = async () => {
             try {
-                const response = await axios.post('http://127.0.0.1:8000/api/getfannum', {
+                const response = await axios.post('https://dressify-backend-47cc2f5ae409.herokuapp.com/api/getfannum', {
                     UID: data.UID,
                 })
                  console.log(response.data[0])
@@ -96,7 +96,7 @@ function Selfpage() {
     useEffect(() => {
         const getuserpost = async () => {
             try {
-                const response = await axios.post('http://127.0.0.1:8000/api/getuserpost', {
+                const response = await axios.post('https://dressify-backend-47cc2f5ae409.herokuapp.com/api/getuserpost', {
                     UID: data.UID,
                 })
                 //  console.log(response.data)
@@ -114,7 +114,7 @@ function Selfpage() {
     useEffect(() => {
         const getusercollect = async () => {
             try {
-                const response = await axios.post('http://127.0.0.1:8000/api/getusercollect', {
+                const response = await axios.post('https://dressify-backend-47cc2f5ae409.herokuapp.com/api/getusercollect', {
                     UID: data.UID,
                 })
                 //  console.log(response.data)

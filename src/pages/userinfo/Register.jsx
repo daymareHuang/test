@@ -91,7 +91,7 @@ function Register() {
     }
     console.log('Avatar:', avatar);
     try {
-      const response = await axios.post('http://127.0.0.1:8000/api/register', formData, {
+      const response = await axios.post('https://dressify-backend-47cc2f5ae409.herokuapp.com/api/register', formData, {
         headers: {
           'Content-Type': 'multipart/form-data'  // 設置為 multipart/form-data
         }

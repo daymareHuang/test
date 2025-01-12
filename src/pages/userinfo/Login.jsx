@@ -59,7 +59,7 @@ function Login() {
     }
 
     try {
-      const response = await axios.post('http://127.0.0.1:8000/api/login', {
+      const response = await axios.post('https://dressify-backend-47cc2f5ae409.herokuapp.com/api/login', {
         Email: userId,    // 使用 `Email` 字段
         UserPWD: userPwd  // 使用 `UserPWD` 字段
       });

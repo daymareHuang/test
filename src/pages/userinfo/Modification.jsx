@@ -32,7 +32,7 @@ function Modification() {
     //         const UID = userObj.UID;
     //         // 如果 UID 存在，發送請求到後端 API 獲取 UserName 和 Avatar
     //         if (UID) {
-    //             axios.get(`http://127.0.0.1:8000/api/user-info/${UID}`)
+    //             axios.get(`https://dressify-backend-47cc2f5ae409.herokuapp.com/api/user-info/${UID}`)
     //                 .then(response => {
     //                     // 請求成功後，更新 userData 狀態
     //                     const { UserName, Avatar } = response.data;
@@ -123,7 +123,7 @@ function Modification() {
         }
 
         try {
-            const response = await axios.patch(`http://127.0.0.1:8000/api/update-profile/${UID}`, formData, {
+            const response = await axios.patch(`https://dressify-backend-47cc2f5ae409.herokuapp.com/api/update-profile/${UID}`, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'  // 設置為 multipart/form-data
                 }
@@ -161,7 +161,7 @@ function Modification() {
         const UID = userObj.UID;
 
         try {
-            const response = await axios.delete(`http://127.0.0.1:8000/api/delete-account/${UID}`);
+            const response = await axios.delete(`https://dressify-backend-47cc2f5ae409.herokuapp.com/api/delete-account/${UID}`);
             alert('帳號已成功刪除');
             localStorage.removeItem('user');
             navigate('/'); // 刪除後導向首頁

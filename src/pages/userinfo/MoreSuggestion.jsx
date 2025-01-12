@@ -26,7 +26,7 @@ function MoreSuggestion() {
       const userObj = JSON.parse(storedData);
       const UID = userObj.UID;
       if (UID) {
-        axios.get(`http://127.0.0.1:8000/api/outfits/photos/exceptFor/${UID}`)
+        axios.get(`https://dressify-backend-47cc2f5ae409.herokuapp.com/api/outfits/photos/exceptFor/${UID}`)
           .then(response => {
             // console.log('API response:', response.data);  // 查看返回的完整資料
             const allPhotos = response.data;

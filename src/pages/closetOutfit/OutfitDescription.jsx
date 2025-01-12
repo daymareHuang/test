@@ -54,7 +54,7 @@ function OutfitDescription() {
 
     async function handleNext() {
         // navigate("/")
-        const apiUrl = "http://127.0.0.1:8000/api/OutfitDescription"
+        const apiUrl = "https://dressify-backend-47cc2f5ae409.herokuapp.com/api/OutfitDescription"
 
         const Title = tittle || '沒有名稱';
         const Content = comment || null;

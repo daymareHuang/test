@@ -45,8 +45,8 @@ function AddTagCloset({ setIsSliderVisible, selectID }) {
         }
 
         async function callAPI() {
-            // let response = await fetch("http://127.0.0.1:8000/api/closet");
-            let response = await fetch(`http://127.0.0.1:8000/api/closet/${uid}`);
+            // let response = await fetch("https://dressify-backend-47cc2f5ae409.herokuapp.com/api/closet");
+            let response = await fetch(`https://dressify-backend-47cc2f5ae409.herokuapp.com/api/closet/${uid}`);
             let json = await response.json();
             jsonData.current = json
 

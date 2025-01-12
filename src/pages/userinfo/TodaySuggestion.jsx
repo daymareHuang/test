@@ -22,7 +22,7 @@ function TodaySuggestion() {
       const UID = userObj.UID;
       // 如果 UID 存在，發送請求到後端 API 獲取 UserName 和 Avatar
       if (UID) {
-        axios.get(`http://127.0.0.1:8000/api/outfits/photos/${UID}`)
+        axios.get(`https://dressify-backend-47cc2f5ae409.herokuapp.com/api/outfits/photos/${UID}`)
           .then(response => {
             const photosData = response.data;
             if (photosData && photosData.length > 0) {

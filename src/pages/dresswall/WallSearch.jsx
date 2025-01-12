@@ -48,7 +48,7 @@ function Wallsearch() {
     setLoading(true)
     const topbrands = async () => {
       try {
-        const response = await axios.get('http://127.0.0.1:8000/api/brand')
+        const response = await axios.get('https://dressify-backend-47cc2f5ae409.herokuapp.com/api/brand')
         // console.log(response.data)
         setBrands(response.data)
         setLoading(false)
@@ -67,7 +67,7 @@ function Wallsearch() {
     setLoading(true)
     const topclothes = async () => {
       try {
-        const response = await axios.get('http://127.0.0.1:8000/api/clothestype')
+        const response = await axios.get('https://dressify-backend-47cc2f5ae409.herokuapp.com/api/clothestype')
         // console.log(response.data)
         setClothes(response.data)
         setLoading(false)

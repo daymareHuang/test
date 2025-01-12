@@ -22,7 +22,7 @@ function ClosetEditOutfit() {
 
     useEffect(() => {
         async function callAPI() {
-            let url = `http://127.0.0.1:8000/api/ClosetMatch/${outfitID}`;
+            let url = `https://dressify-backend-47cc2f5ae409.herokuapp.com/api/ClosetMatch/${outfitID}`;
             let response = await fetch(url);
             let json = await response.json(response);
 
@@ -63,7 +63,7 @@ function ClosetEditOutfit() {
         navigate(-1);
     }
     const handleSave = async () => {
-        const url = `http://127.0.0.1:8000/api/ClosetMatch/${outfit.OutfitID}`
+        const url = `https://dressify-backend-47cc2f5ae409.herokuapp.com/api/ClosetMatch/${outfit.OutfitID}`
 
         // FormValue
         const titleAfter = titleRef.current.value;

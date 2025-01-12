@@ -31,8 +31,8 @@ function ClosetCheckOutfit() {
     // 接API
     useEffect(() => {
         async function callAPI() {
-            // let url = `http://127.0.0.1:8000/api/ClosetMatch/${outfitID}`
-            let url = `http://127.0.0.1:8000/api/ClosetMatch/${outfitID}`
+            // let url = `https://dressify-backend-47cc2f5ae409.herokuapp.com/api/ClosetMatch/${outfitID}`
+            let url = `https://dressify-backend-47cc2f5ae409.herokuapp.com/api/ClosetMatch/${outfitID}`
             let response = await fetch(url);
             let json = await response.json();
             console.log(json);
@@ -130,7 +130,7 @@ function ClosetCheckOutfit() {
             return
         }
 
-        const apiURL = `http://127.0.0.1:8000/api/ClosetMatch/${outfitID}`;
+        const apiURL = `https://dressify-backend-47cc2f5ae409.herokuapp.com/api/ClosetMatch/${outfitID}`;
         try {
             const response = await fetch(apiURL, {
                 method: 'DELETE'

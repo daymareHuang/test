@@ -13,7 +13,7 @@ function MyFooter() {
     // useEffect(()=>{
     //     const userinfo = async () => {
     //         try {
-    //             const response = await axios.post('http://127.0.0.1:8000/api/userself', {
+    //             const response = await axios.post('https://dressify-backend-47cc2f5ae409.herokuapp.com/api/userself', {
     //                 UID: 1,
     //             });
     //             console.log('yes')
@@ -47,7 +47,7 @@ function MyFooter() {
             const UID = userObj.UID;
             // 如果 UID 存在，發送請求到後端 API 獲取 UserName 和 Avatar
             if (UID) {
-                axios.get(`http://127.0.0.1:8000/api/user-info/${UID}`)
+                axios.get(`https://dressify-backend-47cc2f5ae409.herokuapp.com/api/user-info/${UID}`)
                     .then(response => {
                         // 請求成功後，更新 userData 狀態
                         const { UserName, Avatar } = response.data;

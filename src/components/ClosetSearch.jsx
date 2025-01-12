@@ -41,7 +41,7 @@ function ClosetSearch({ close }) {
     const keyword = keywordRef.current.value;
 
     // 送出fetch拿回相符合的items
-    const url = `http://127.0.0.1:8000/api/items/${UID}/search?keyword=${keyword}`;
+    const url = `https://dressify-backend-47cc2f5ae409.herokuapp.com/api/items/${UID}/search?keyword=${keyword}`;
 
     const response = await fetch(url);
     const jsonObj = await response.json();
