@@ -155,7 +155,7 @@ function AddAvatar() {
             {/* Avatar Image */}
             <div className="avatar-container" onClick={handleAvatarClick}>
                 <img
-                    src={croppedImage || image || userData.avatar || "https://dressfiy.onrender.com/src/assets/img/icon/avatar.svg"}
+                    src={croppedImage || image || userData.avatar || "/assets/img/icon/avatar.svg"}
                     alt="Avatar"
                     className="rounded-circle userImgBig"
                 />
