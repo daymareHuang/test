@@ -73,16 +73,16 @@ function MyFooter() {
     return (
         <footer className="nav navbar fixed-bottom justify-content-evenly align-items-center"
             style={{ backgroundColor: '#ebe3e0' }}>
-            <div><Link to="/Closet"><img src="../src/assets/img/icon/closet.svg" alt="" width="27px" height="28px" /></Link></div>
-            <div><Link to="/dresswall"><img src="../src/assets/img/icon/instagram.svg" alt="" width="30px" /></Link></div>
-            <div><Link to="/Dashboard"><img src="../src/assets/img/icon/home.svg" alt="" width="30px" /></Link></div>
+            <div><Link to="/Closet"><img src="/assets/img/icon/closet.svg" alt="" width="27px" height="28px" /></Link></div>
+            <div><Link to="/dresswall"><img src="/assets/img/icon/instagram.svg" alt="" width="30px" /></Link></div>
+            <div><Link to="/Dashboard"><img src="/assets/img/icon/home.svg" alt="" width="30px" /></Link></div>
             {/*    // 圖像是沒有登入的狀態 : /Login
                      // 圖像有登入的狀態 : /dresswall/yourself
     
                 <div><Link to="./modify.html"><img src="https://www.dummyimage.com/30x30/aad4e3/000.jpg&text=30*30" alt=""
                 className="img rounded-circle" width="30px" /></Link></div> 
             */}
-            <div><a href="/dresswall/yourself"><img src={userData.avatar || '../src/assets/img/icon/avatar.svg'} alt=""
+            <div><a href="/dresswall/yourself"><img src={userData.avatar || '/assets/img/icon/avatar.svg'} alt=""
                 className="img rounded-circle" width="30px" height="30px" style={{objectFit:"cover"}} /></a></div>
         </footer>
     )

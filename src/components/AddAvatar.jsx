@@ -160,7 +160,7 @@ function AddAvatar() {
                     className="rounded-circle userImgBig"
                 />
                 <img
-                    src="../src/assets/img/icon/camera.svg"
+                    src="/assets/img/icon/camera.svg"
                     alt="Camera Icon"
                     style={{
                         position: 'absolute',

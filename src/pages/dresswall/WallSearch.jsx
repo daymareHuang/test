@@ -98,11 +98,11 @@ function Wallsearch() {
           {/* <!-- condition button  --> */}
           {/* <!-- more condition to set  --> */}
           <button type="button" className="btn btn-normal  rounded-end-0  rounded-start-0 " onClick={handleShow} style={{ border: 0 }}>
-            <img className="icon" src="../src/assets/img/icon/settings-sliders.svg" alt="" />
+            <img className="icon" src="/assets/img/icon/settings-sliders.svg" alt="" />
           </button>
           {/* <!-- search button  --> */}
           <button className="btn btn-normal rounded-end-pill rounded-start-0" type='button' onClick={handleSearch} style={{ border: 0 }}>
-            <img className="icon" src="../src/assets/img/icon/search.svg" alt="" />
+            <img className="icon" src="/assets/img/icon/search.svg" alt="" />
           </button>
 
         </form>
@@ -152,7 +152,7 @@ function Wallsearch() {
         <Modal show={show} onHide={handleClose}>
           <Modal.Header style={{ backgroundColor: "#f9f8f4" }}>
             <Modal.Title className="text-l fw-bold" >進階搜尋</Modal.Title>
-            <img className='iconsmall ms-auto' variant="secondary" onClick={handleClose} src="../src/assets/img/icon/cross-circle.svg" alt="" />
+            <img className='iconsmall ms-auto' variant="secondary" onClick={handleClose} src="/assets/img/icon/cross-circle.svg" alt="" />
           </Modal.Header>
           <Modal.Body style={{ backgroundColor: "#f9f8f4" }}>
 
@@ -283,7 +283,7 @@ function Wallsearch() {
               <br />
 
               <a className='btn btn-normal rounded-pill w-100 d-flex justify-content-center ' variant="secondary" type='submit' style={{ height: "30px" }} onClick={handleComplicated}>
-                <img className="icon " src="../src/assets/img/icon/search.svg" alt="搜尋" />
+                <img className="icon " src="/assets/img/icon/search.svg" alt="搜尋" />
               </a>
 
 

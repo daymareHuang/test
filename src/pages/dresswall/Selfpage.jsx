@@ -133,7 +133,7 @@ function Selfpage() {
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header style={{ backgroundColor: "#f9f8f4" }}>
                     <Modal.Title >更改資料</Modal.Title>
-                    <img className='iconsmall ms-auto' variant="secondary" onClick={handleClose} src="../src/assets/img/icon/cross-circle.svg" alt="" />
+                    <img className='iconsmall ms-auto' variant="secondary" onClick={handleClose} src="/assets/img/icon/cross-circle.svg" alt="" />
                 </Modal.Header>
                 <Modal.Body style={{ backgroundColor: "#f9f8f4" }}>
                     <label htmlFor="introduce">請寫下要更改的內容:</label>
@@ -144,7 +144,7 @@ function Selfpage() {
                     {/* 這邊需要更改完重新render */}
                     {/* 感覺要一個useState */}
                     <a href="" variant="secondary" onClick={handleClose}>
-                        <img className="icon" src="../src/assets/img/icon/check-circle.svg" alt="" />
+                        <img className="icon" src="/assets/img/icon/check-circle.svg" alt="" />
                     </a>
                     {/* <Button variant="secondary" onClick={handleClose}>
                         關閉
@@ -160,9 +160,9 @@ function Selfpage() {
                 <div className="row mt-3 m-auto">
                     <div className="d-flex position-relative col-3" style={{ height: "65px", width: "70px" }}>
                         {/* <!--user's img  --> */}
-                        {/* <img className="userImgBig" src="../src/assets/img/user_img.png" alt="your photo" /> */}
+                        {/* <img className="userImgBig" src="/assets/img/user_img.png" alt="your photo" /> */}
                         {/* <!--to the right bottom of the div --> */}
-                        {/* <img className="iconsmall position-absolute bottom-0 end-0" src="../src/assets/img/icon/camera.svg" alt="edit your photo" /> */}
+                        {/* <img className="iconsmall position-absolute bottom-0 end-0" src="/assets/img/icon/camera.svg" alt="edit your photo" /> */}
                         <AddAvatar />
                     </div>
 
@@ -182,11 +182,11 @@ function Selfpage() {
                     {/* <!--userIntroduction --> */}
                     {data.UserIntro ?
                         (<p className="userIntro mx-3 text-black text-xs ">{data.UserIntro}
-                            <img className="icon" src="../src/assets/img/icon/pencil.svg" alt="edit profile" onClick={handleShow} style={{ width: "18px", marginLeft: "5px" }} />
+                            <img className="icon" src="/assets/img/icon/pencil.svg" alt="edit profile" onClick={handleShow} style={{ width: "18px", marginLeft: "5px" }} />
                         </p>)
                         :
                         (<p className="userIntro mx-3 text-secondary text-xs text-center">尚無介紹
-                            <img className="icon" src="../src/assets/img/icon/pencil.svg" alt="edit profile" onClick={handleShow} style={{ width: "18px", marginLeft: "5px" }} />
+                            <img className="icon" src="/assets/img/icon/pencil.svg" alt="edit profile" onClick={handleShow} style={{ width: "18px", marginLeft: "5px" }} />
                         </p>)
                     }
                 </div>
@@ -215,19 +215,19 @@ function Selfpage() {
                 {/* <!--it should be two pair one line --> */}
                 {/* <div className="mt-3 row bgc-normal" style={{ paddingTop: "10px", paddingBottom: "10px" }}> */}
                 {/* <!--hover should be click hand instead --> */}
-                {/* <img className="stylePic col-6 mt-1" src="../src/assets/img/user_dino.png" data-bs-toggle="modal"
+                {/* <img className="stylePic col-6 mt-1" src="/assets/img/user_dino.png" data-bs-toggle="modal"
                         data-bs-target="#pictureModal" />
-                    <img className="stylePic col-6 mt-1" src="../src/assets/img/user_dino.png" alt="" />
-                    <img className="stylePic col-6 mt-1" src="../src/assets/img/user_dino.png" alt="" />
-                    <img className="stylePic col-6 mt-1" src="../src/assets/img/user_dino.png" alt="" />
+                    <img className="stylePic col-6 mt-1" src="/assets/img/user_dino.png" alt="" />
+                    <img className="stylePic col-6 mt-1" src="/assets/img/user_dino.png" alt="" />
+                    <img className="stylePic col-6 mt-1" src="/assets/img/user_dino.png" alt="" />
                 </div> */}
 
                 <Tabs defaultActiveKey="Post" id="genderTab" className="mb-3 justify-content-center text-m " variant="underline">
                     <Tab id="postTab" eventKey="Post" title="Post" className='text-black row bgc-normal p-3 rounded'>
-                        {/* <img className="stylePic col-6 mt-3 " src="../src/assets/img/user_dino.png" alt="" />
-                    <img className="stylePic col-6 mt-3" src="../src/assets/img/user_dino.png" alt="" />
-                    <img className="stylePic col-6 mt-3" src="../src/assets/img/user_dino.png" alt="" />
-                    <img className="stylePic col-6 mt-3" src="../src/assets/img/user_dino.png" alt="" />
+                        {/* <img className="stylePic col-6 mt-3 " src="/assets/img/user_dino.png" alt="" />
+                    <img className="stylePic col-6 mt-3" src="/assets/img/user_dino.png" alt="" />
+                    <img className="stylePic col-6 mt-3" src="/assets/img/user_dino.png" alt="" />
+                    <img className="stylePic col-6 mt-3" src="/assets/img/user_dino.png" alt="" />
                          */}
                         {
                             userPosts.map((post, key) => (

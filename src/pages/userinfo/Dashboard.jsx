@@ -135,7 +135,7 @@ function Dashboard() {
                         </Link>
                         <Link to="/dresswall/yourself" style={{ textDecoration: 'none', color: '#3b3a38' }} className="d-flex flex-column my-3 align-items-center justify-content-center text-m">
                             <img
-                                src={userData.avatar || "../src/assets/img/icon/avatar.svg"} // 預設值處理
+                                src={userData.avatar || "/assets/img/icon/avatar.svg"} // 預設值處理
                                 alt="User Avatar"
                                 className="img rounded-circle"
                                 style={{ objectFit: "cover" }}

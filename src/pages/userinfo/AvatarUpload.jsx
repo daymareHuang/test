@@ -139,12 +139,12 @@ function AvatarUpload() {
             {/* Avatar Image */}
             <div className="avatar-container" onClick={handleAvatarClick} style={{ position: 'relative', display: 'inline-block' }}>
                 <img
-                    src={croppedImage || image || userData.avatar || "../src/assets/img/icon/avatar.svg"}
+                    src={croppedImage || image || userData.avatar || "/assets/img/icon/avatar.svg"}
                     alt="Avatar"
                     className="rounded-circle userImgBig"
                 />
                 <img
-                    src="../src/assets/img/icon/camera.svg"
+                    src="/assets/img/icon/camera.svg"
                     alt="Camera Icon"
                     style={{
                         position: 'absolute',

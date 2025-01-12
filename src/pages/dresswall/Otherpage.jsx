@@ -163,7 +163,7 @@ function Otherpage() {
                 <div className="row mt-3 m-auto">
                     <div className="d-flex position-relative col-3" style={{ height: "65px", width: "70px" }}>
                         {/* <!--user's img  --> */}
-                        {/* <img className="userImgBig" src="../src/assets/img/user_img.png" alt="your photo" /> */}
+                        {/* <img className="userImgBig" src="/assets/img/user_img.png" alt="your photo" /> */}
                         <img className="userImgBig" src={userinfo.Avatar} alt="" />
                     </div>
 
@@ -176,11 +176,11 @@ function Otherpage() {
                         {
                             follow ?
                                 (
-                                    <button className='btn btn-sm text-m rounded-pill btn-highlight col-12' onClick={handleClickFollow} >追蹤中 <img src="../src/assets/img/icon/followed.svg" alt="" style={{ width: "15px", height: "15px" }} /></button>
+                                    <button className='btn btn-sm text-m rounded-pill btn-highlight col-12' onClick={handleClickFollow} >追蹤中 <img src="/assets/img/icon/followed.svg" alt="" style={{ width: "15px", height: "15px" }} /></button>
                                 )
                                 :
                                 (
-                                    <button className='btn-normal btn btn-sm text-m rounded-pill col-12' onClick={handleClickFollow}>追蹤 <img src="../src/assets/img/icon/following.svg" alt="" style={{ width: "15px", height: "15px" }} /></button>
+                                    <button className='btn-normal btn btn-sm text-m rounded-pill col-12' onClick={handleClickFollow}>追蹤 <img src="/assets/img/icon/following.svg" alt="" style={{ width: "15px", height: "15px" }} /></button>
                                 )
                         }
                     </div>

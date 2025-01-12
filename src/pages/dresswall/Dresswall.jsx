@@ -64,7 +64,7 @@ function Dresswall() {
                 {/* <!-- gendertab and search icon --> */}
                 <div className="w-100 position-relative mt-3 justify-content-center">
                     <Link to="/dresswall/search" className="btn btn-normal rounded-pill position-absolute end-0" >
-                        <img className="icon" src="../src/assets/img/icon/search.svg" alt="搜尋" />
+                        <img className="icon" src="/assets/img/icon/search.svg" alt="搜尋" />
                     </Link>
                     {/* <!-- GenderTab --> */}
                     {/* 要能夠越滑出現越多 */}
@@ -128,7 +128,7 @@ function Dresswall() {
                         </li> */}
                     {/* <!--  seearch button should be the right-end --> */}
                     {/* <Link className="btn btn-normal rounded-pill position-absolute end-0" to="/dresswall/search">
-                            <img className="icon" src="../src/assets/img/icon/search.svg" alt="搜尋" /></Link>
+                            <img className="icon" src="/assets/img/icon/search.svg" alt="搜尋" /></Link>
                     </ul>
                     <div className="tab-content" id="myTabContent">
                         <div className="tab-pane fade show active" id="men-tab" role="tabpanel" aria-labelledby="home-tab" tabIndex="0"></div>
@@ -142,7 +142,7 @@ function Dresswall() {
                 {/* <!-- Postbutton --> */}
 
                 {/* <div className="w-100 position-relative mt-3">
-                    <a className="btn rounded-pill w-100 btn-normal"><img className="icon" src="../src/assets/img/icon/add.svg" alt="add post" /></a>
+                    <a className="btn rounded-pill w-100 btn-normal"><img className="icon" src="/assets/img/icon/add.svg" alt="add post" /></a>
                 </div> */}
 
 
