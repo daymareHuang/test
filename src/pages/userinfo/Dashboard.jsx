@@ -126,11 +126,11 @@ function Dashboard() {
                 <div style={{ backgroundColor: '#F8F9F3' }} className="container-fluid my-1">
                     <div className="d-flex flex-nowrap align-items-center justify-content-evenly">
                         <Link to="/Closet" style={{ textDecoration: 'none', color: '#3b3a38' }} className="d-flex flex-column my-3 align-items-center justify-content-center text-m">
-                            <img src="./src/assets/img/icon/closet.svg" alt="" className="img" width="27px" height="28px" />
+                            <img src="/assets/img/icon/closet.svg" alt="" className="img" width="27px" height="28px" />
                             <span>我的衣櫃</span>
                         </Link>
                         <Link to="/dresswall" style={{ textDecoration: 'none', color: '#3b3a38' }} className="d-flex flex-column my-3 align-items-center justify-content-center text-m">
-                            <img src="./src/assets/img/icon/instagram.svg" alt="" className="img" width="30px" />
+                            <img src="/assets/img/icon/instagram.svg" alt="" className="img" width="30px" />
                             <span>穿搭分享</span>
                         </Link>
                         <Link to="/dresswall/yourself" style={{ textDecoration: 'none', color: '#3b3a38' }} className="d-flex flex-column my-3 align-items-center justify-content-center text-m">

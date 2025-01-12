@@ -34,7 +34,7 @@ function OutfitDescription() {
 
                 {/* 圖片 */}
                 <div className='m-auto mb-4' style={{ width: '205px' }}>
-                    <img className='w-100 rounded-5' src="./src/assets/img/picture1.jpg" />
+                    <img className='w-100 rounded-5' src="/assets/img/picture1.jpg" />
                 </div>
 
                 {/* 穿搭名稱 */}

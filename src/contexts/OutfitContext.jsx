@@ -18,7 +18,7 @@ export const OutfitContextProvider = (props) => {
     // 照片 // 獲取 BLOB Image
     // useEffect(() => {
     //     let takePhoto = async function () {
-    //         const url = "./src/assets/img/outfit.jpg"
+    //         const url = "/assets/img/outfit.jpg"
     //         let response = await fetch(url) //使用fetch 去取得資料
     //         const base64 = await response.blob() //將取得的資料 存放到 BLOB
 

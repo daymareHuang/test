@@ -169,7 +169,7 @@ function OutfitDescription() {
                             {sceneList.map((val) => (
                                 <div className='col-5 rounded-pill d-flex justify-content-between py-1 ' key={val} style={{ backgroundColor: 'var(--color-white)' }}>
                                     <span className='text-m  ms-1 me-1 ps-2'>{val}</span>
-                                    <img className='pe-2' id={val} onClick={handleDel} src="./src/assets/img/icon/cross-circle-fill-black.svg" width="23px" style={{ cursor: 'pointer' }} />
+                                    <img className='pe-2' id={val} onClick={handleDel} src="/assets/img/icon/cross-circle-fill-black.svg" width="23px" style={{ cursor: 'pointer' }} />
                                 </div>
                             ))}
                         </div>
