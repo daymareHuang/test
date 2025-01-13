@@ -82,7 +82,7 @@ function MyFooter() {
                 <div><Link to="./modify.html"><img src="https://www.dummyimage.com/30x30/aad4e3/000.jpg&text=30*30" alt=""
                 className="img rounded-circle" width="30px" /></Link></div> 
             */}
-            <div><a href="/dresswall/yourself"><img src={userData.avatar || '/assets/img/icon/avatar.svg'} alt=""
+            <div><a href="/dresswall/Yourself"><img src={userData.avatar || '/assets/img/icon/avatar.svg'} alt=""
                 className="img rounded-circle" width="30px" height="30px" style={{objectFit:"cover"}} /></a></div>
         </footer>
     )
