@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import AddPop from './AddPop';
 import ClosetSearch from './ClosetSearch';
+import { Link } from "react-router-dom"
+
 
 function ClosetHeader({ isActive }) {
   const [activeBtn, setActiveBtn] = useState(isActive)
