@@ -39,11 +39,11 @@ function ClosetHeader({ isActive }) {
           </a>
 
           <a className="col-6">
-            <img src="src/assets/img/icon/add.svg" style={{ width: '25px' }} alt="add" onClick={handleClickAdd} />
+            <img src="/assets/img/icon/add.svg" style={{ width: '25px' }} alt="add" onClick={handleClickAdd} />
           </a>
 
           <a className="col-1">
-            <img src="src/assets/img/icon/pic-search.svg" style={{ width: '25px' }} alt="search" onClick={handleClickSearch} />
+            <img src="/assets/img/icon/pic-search.svg" style={{ width: '25px' }} alt="search" onClick={handleClickSearch} />
           </a>
 
         </div>

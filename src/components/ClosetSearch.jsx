@@ -68,7 +68,7 @@ function ClosetSearch({ close }) {
             </div>
 
             <div>
-              <img src="src/assets/img/icon/search.svg" className='me-2' style={{ width: '20px' }} alt="search" onClick={handleSearch} />
+              <img src="/assets/img/icon/search.svg" className='me-2' style={{ width: '20px' }} alt="search" onClick={handleSearch} />
             </div>
           </div>
         </div>

@@ -68,19 +68,19 @@ function ImgEditList() {
                     {/* 編輯按鈕 */}
                     <div className="w-100 px-3 d-flex justify-content-between">
                         <div className="btn d-flex flex-column align-items-center" onClick={handleEditCrop} >
-                            <img src="src/assets/img/icon/crop-circle.svg" className='mb-2' width={'40px'} />
+                            <img src="/assets/img/icon/crop-circle.svg" className='mb-2' width={'40px'} />
                             <span className="text-s letterSpacing-1">裁切</span>
                         </div>
                         <div className="btn d-flex flex-column align-items-center" onClick={handleEditBrightness} >
-                            <img src="src/assets/img/icon/brigness-circle.svg" className='mb-2' width={'40px'} />
+                            <img src="/assets/img/icon/brigness-circle.svg" className='mb-2' width={'40px'} />
                             <span className="fontSet-1 letterSpacing-1">亮度</span>
                         </div>
                         <div className="btn d-flex flex-column align-items-center" onClick={handleEditContrast} >
-                            <img src="src/assets/img/icon/contrast-circle.svg" className='mb-2' width={'40px'} />
+                            <img src="/assets/img/icon/contrast-circle.svg" className='mb-2' width={'40px'} />
                             <span className="fontSet-1 letterSpacing-1">對比</span>
                         </div>
                         <div className="btn d-flex flex-column align-items-center" onClick={handleEditSaturate} >
-                            <img src="src/assets/img/icon/saturate-circle.svg" className='mb-2' width={'40px'} />
+                            <img src="/assets/img/icon/saturate-circle.svg" className='mb-2' width={'40px'} />
                             <span className="fontSet-1 letterSpacing-1">飽和度</span>
                         </div>
                     </div>

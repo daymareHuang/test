@@ -57,10 +57,10 @@ function ImgEditCrop() {
 
                 <div className="w-100 d-flex justify-content-between mt-4 px-3">
                     <button onClick={handleCancel} className='btn'>
-                        <img src="src/assets/img/icon/cross-circle-fill-black.svg" width={'40px'} />
+                        <img src="/assets/img/icon/cross-circle-fill-black.svg" width={'40px'} />
                     </button>
                     <button onClick={handleSave} className='btn'>
-                        <img src="src/assets/img/icon/Ok.svg" width={'40px'} />
+                        <img src="/assets/img/icon/Ok.svg" width={'40px'} />
                     </button>
                 </div>
             </div>

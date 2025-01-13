@@ -194,7 +194,7 @@ function Login() {
               </div>
               {/* <div className="my-4 align-items-center text-center">
                   <button className="btn btn-lg text-m py-1 w-100" style={{ backgroundColor: '#ebe3e0' }}>
-                    <img src="src/assets/img/icon/google.svg" alt="" width="30px" />&nbsp;Google登入
+                    <img src="/assets/img/icon/google.svg" alt="" width="30px" />&nbsp;Google登入
                   </button>
                 </div> */}
             </div>

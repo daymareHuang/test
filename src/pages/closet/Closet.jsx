@@ -62,7 +62,7 @@ function Closet() {
           ) : (
             <p>Loading...</p>
           )}
-          <a href="/ClosetPart/1"><img src="src/assets/img/icon/dot-pending.svg" style={{ width: '24px' }} alt="more" /></a>
+          <a href="/ClosetPart/1"><img src="/assets/img/icon/dot-pending.svg" style={{ width: '24px' }} alt="more" /></a>
         </div>
 
         {/* <!-- 部位2 下身 --> */}
@@ -86,7 +86,7 @@ function Closet() {
           ) : (
             <p>Loading...</p>
           )}
-          <a href="/ClosetPart/2"><img src="src/assets/img/icon/dot-pending.svg" style={{ width: '26px' }} alt="more" /></a>
+          <a href="/ClosetPart/2"><img src="/assets/img/icon/dot-pending.svg" style={{ width: '26px' }} alt="more" /></a>
         </div>
 
         {/* <!-- 部位3 鞋子 --> */}
@@ -110,7 +110,7 @@ function Closet() {
           ) : (
             <p>Loading...</p>
           )}
-          <a href="/ClosetPart/3"><img src="src/assets/img/icon/dot-pending.svg" style={{ width: '26px' }} alt="more" /></a>
+          <a href="/ClosetPart/3"><img src="/assets/img/icon/dot-pending.svg" style={{ width: '26px' }} alt="more" /></a>
         </div>
 
         {/* <!-- 部位4 配件 --> */}
@@ -134,7 +134,7 @@ function Closet() {
           ) : (
             <p>Loading...</p>
           )}
-          <a href="/ClosetPart/4"><img src="src/assets/img/icon/dot-pending.svg" style={{ width: '26px' }} alt="more" /></a>
+          <a href="/ClosetPart/4"><img src="/assets/img/icon/dot-pending.svg" style={{ width: '26px' }} alt="more" /></a>
         </div>
       </div>
     </ClosetLayout>

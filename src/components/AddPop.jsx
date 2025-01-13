@@ -78,7 +78,7 @@ function AddPop({close}) {
             alt="one" /><span className='ms-3 align-middle'>&nbsp;新&nbsp;增&nbsp;單&nbsp;品</span></div>
 
           <div ref={divElemM} onClick={handleClickAddM} className="text-m text-center py-3 text-secondary">
-            <img src="src/assets/img/icon/add_match.svg" className="align-middle opacity-50" style={{width: '28px'}} alt="set" />
+            <img src="/assets/img/icon/add_match.svg" className="align-middle opacity-50" style={{width: '28px'}} alt="set" />
             <span className='ms-3 align-middle'>&nbsp;新&nbsp;增&nbsp;穿&nbsp;搭</span></div>
         </div>
       </div>
@@ -88,14 +88,14 @@ function AddPop({close}) {
       {/* <div id="addPopM" ref={divPopM} className="fixed-bottom bg-light rounded-top" style={{height: '220px'}}> */}
         {/* <div className="mx-5 my-3 pt-3">
           <a href="#" className="btn btn-dark md-24 p-3" style={{width: '275px'}}>
-            <img src="src/assets/img/icon/add_match_closet_white.svg" className="align-text-bottom" style={{width: '26px'}} />
+            <img src="/assets/img/icon/add_match_closet_white.svg" className="align-text-bottom" style={{width: '26px'}} />
             <span className="md-24">&nbsp;&nbsp;衣櫃搭配</span>
           </a>
         </div> */}
         {/* <div className="mx-5 my-3 text-center">
           <!-- href needs to be set for redirecting -->
           <a href="/Image" className="btn text-m p-3" style={{width: '275px', backgroundColor: 'var(--color-highlight)'}}>
-            <img src="src/assets/img/icon/add_match_pic_white.svg" className="align-text-top" style={{width: '26px'}} />
+            <img src="/assets/img/icon/add_match_pic_white.svg" className="align-text-top" style={{width: '26px'}} />
             <span className="ms-3 text-m text-light">&nbsp;上&nbsp;傳&nbsp;圖&nbsp;片</span>
           </a>
         </div> */}
