@@ -6,7 +6,7 @@ import CurrentDate from './CurrentDate'
 
 const weatherIcons = {
     '晴天': '/assets/img/weathericon/01.svg',
-    '晴時多雲': '/public/assets/img/weathericon/02.svg',
+    '晴時多雲': '/assets/img/weathericon/02.svg',
     '多雲時晴': '/assets/img/weathericon/03.svg',
     '多雲': '/assets/img/weathericon/04.svg',
     '多雲時陰': '/assets/img/weathericon/05.svg',
