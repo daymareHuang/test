@@ -29,11 +29,11 @@ function ClosetHeader({ isActive }) {
     <>
       <div className="fixed-top bg-light my-5" style={{ top: '14px', width: '375px'}}>
         <div className="row align-items-center">
-          <a href="/Closet" className="text-xs col-2 ms-3 my-2 btn rounded-pill ssbtn"
+          <Link to="/Closet" className="text-xs col-2 ms-3 my-2 btn rounded-pill ssbtn"
             style={{ backgroundColor: activeBtn === '單品' ? 'var(--color-highlight)' : 'var(--color-base)', color: activeBtn === '單品' ? 'var(--color-white)' : 'var(--color-black)' }}
             onClick={() => { handleBtnActive('單品') }}>
             <b>單品</b>
-          </a>
+          </Link>
           <Link to="/ClosetMatch" className="col-2 ms-2 my-2 btn rounded-pill ssbtn"
             style={{ backgroundColor: activeBtn === '穿搭' ? 'var(--color-highlight)' : 'var(--color-base)', color: activeBtn === '穿搭' ? 'var(--color-white)' : 'var(--color-black)' }}
             onClick={() => { handleBtnActive('穿搭') }}>
