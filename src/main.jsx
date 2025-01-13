@@ -117,40 +117,40 @@ const router = createBrowserRouter([
     element: <Register />
   },
   {
-    path: "/Modification",
+    path: "/modification",
     element: <Modification />,
   },
   {
     path: "/Closet",
-    element: <Closet/>,
+    element: <Closet />,
   },
   {
     path: "/ClosetMatch",
-    element: <ClosetMatch/>,
+    element: <ClosetMatch />,
   },
   {
     path: "/ClosetMatch/:outfitID",
-    element: <ClosetCheckOutfit/>,
+    element: <ClosetCheckOutfit />,
   },
   {
     path: "/ClosetEditOutfit/:outfitID",
-    element: <ClosetEditOutfit/>,
+    element: <ClosetEditOutfit />,
   },
   {
     path: "/ClosetPart/:part",
-    element: <ClosetPart/>,
+    element: <ClosetPart />,
   },
   {
     path: "/Crop",
-    element: <Crop/>,
+    element: <Crop />,
   },
   {
     path: "/ClosetEditSingle",
-    element: <ClosetEditSingle/>,
+    element: <ClosetEditSingle />,
   },
   {
     path: "/ClosetCheckSingle/:itemId",
-    element: <ClosetCheckSingle/>,
+    element: <ClosetCheckSingle />,
   },
 ]);
 
