@@ -3,6 +3,8 @@ import Cropper from 'cropperjs'
 import 'cropperjs/dist/cropper.css'
 import ClosetLayoutO from '../../layouts/ClosetLayoutO'
 import { useLocation, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+
 
 function Crop() {
   const [croppedImgURL, setCroppedImgURL] = useState('')
@@ -123,7 +125,7 @@ function Crop() {
 
 
         <div id="progress" className="fixed-bottom border-top d-flex justify-content-between" style={{ height: '55px', width: '375px' }}>
-          <a href="./Closet" className="btn text-xs m-3 px-3 rounded-pill text-light" style={{ backgroundColor: 'var(--color-highlight)' }}>上一步</a>
+          <Link to="./Closet" className="btn text-xs m-3 px-3 rounded-pill text-light" style={{ backgroundColor: 'var(--color-highlight)' }}>上一步</Link>
           <div onClick={handleNextStep} className="btn m-3 px-3 rounded-pill text-light" style={{ backgroundColor: 'var(--color-highlight)' }}>下一步</div>
         </div>
 

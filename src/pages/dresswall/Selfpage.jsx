@@ -7,6 +7,8 @@ import MyLayout from '../../layouts/MyLayout'
 import AddAvatar from "../../components/AddAvatar";
 import { Tabs, Tab } from 'react-bootstrap';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
+
 
 
 

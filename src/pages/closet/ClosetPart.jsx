@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import ClosetLayoutN from '../../layouts/ClosetLayoutN'
 import { useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+
 
 function ClosetPart() {
   const { part } = useParams();
@@ -49,7 +51,7 @@ function ClosetPart() {
         <div className="fixed-top bg-light my-5" style={{ top: '14px' }}>
           <div className="d-flex justify-content-between align-items-center border-bottom" style={{ width: '375px' }}>
             <div className="px-4 p-3 text-m"><b>{partTitle}</b></div>
-            <a href="/Closet" className="px-3"><img src="/assets/img/icon/cross-circle.svg" style={{ width: '25px' }} alt="cancel" /></a>
+            <Link to="/Closet" className="px-3"><img src="/assets/img/icon/cross-circle.svg" style={{ width: '25px' }} alt="cancel" /></Link>
           </div>
         </div>
 
@@ -62,14 +64,14 @@ function ClosetPart() {
                 .filter((item) => item.type.PartID == part)  // 把partID是1的部分濾出來
                 .reverse()
                 .map((item) => (
-                  <a key={item.ItemID} href={`/ClosetCheckSingle/${item.ItemID}`} className="text-light col-6">
+                  <Link key={item.ItemID} to={`/ClosetCheckSingle/${item.ItemID}`} className="text-light col-6">
                     <img
                       className="border rounded"
                       width="160px"
                       height="160px"
                       src={item.EditedPhoto || `/items/item${item.Type}.svg`} // 動態圖片放置在public之下
                     />
-                  </a>
+                  </Link>
                 ))
             ) : (
               <p>Loading...</p>

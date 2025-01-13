@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../css/Dressify.css'
 import Draggable from 'react-draggable';
+import { Link } from 'react-router-dom';
+
 
 import MyLayout from '../../layouts/MyLayout';
 import { useParams, useNavigate } from 'react-router-dom';
@@ -218,7 +220,7 @@ function ClosetCheckOutfit() {
                 <div className='mx-3 row'>
                     {outfit.items && outfit.items.map(({ Size, Color, Brand, EditedPhoto, Title, ItemID }) => {
                         return (<div className='col-6' key={Title} >
-                            <a href={`/ClosetCheckSingle/${ItemID}`} className='text-decoration-none'>
+                            <Link to={`/ClosetCheckSingle/${ItemID}`} className='text-decoration-none'>
                                 {/* 尺寸、照片 */}
                                 <div className='w-100 mb-2 position-relative'>
                                     {/* 照片 */}
@@ -246,7 +248,7 @@ function ClosetCheckOutfit() {
                                         }}>
                                     </div>
                                 </div>
-                            </a>
+                            </Link>
                         </div>)
                     })}
                 </div>
@@ -254,9 +256,9 @@ function ClosetCheckOutfit() {
                 {/* 編輯、刪除 */}
                 <div div className='row d-flex justify-content-evenly px-5 mt-4' >
                     <button onClick={handleDel} className='btn text-m w-auto px-3 rounded-pill' style={{ backgroundColor: 'rgb(255, 30, 30)', color: 'var(--color-white)' }}>刪除穿搭</button>
-                    <a className='w-auto' href={`http://localhost:5173/ClosetEditOutfit/${outfit.OutfitID}`}>
+                    <Link className='w-auto' to={`http://localhost:5173/ClosetEditOutfit/${outfit.OutfitID}`}>
                         <button className='btn text-m  px-3 rounded-pill' style={{ backgroundColor: 'var(--color-black)', color: 'var(--color-white)' }}>編輯穿搭</button>
-                    </a>
+                    </Link>
                 </div>
             </div>
         </MyLayout>
