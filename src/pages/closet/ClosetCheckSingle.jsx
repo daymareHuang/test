@@ -228,7 +228,7 @@ function ClosetCheckSingle() {
           <div className="d-flex justify-content-between align-items-center border-bottom">
             <b><div ref={titleRef} className="p-3 text-m">{item.Title}</div></b>
 
-            <a className="px-3"><img src="/src/assets/img/icon/cross-circle.svg" style={{ width: '25px' }} alt="cancel" onClick={handleLastPage} /></a>
+            <a className="px-3"><img src="/assets/img/icon/cross-circle.svg" style={{ width: '25px' }} alt="cancel" onClick={handleLastPage} /></a>
           </div>
           <div className="p-3 text-center border-bottom" style={{ backgroundColor: 'var(--color-base)' }}>
             <img className="border rounded bg-white" width="175px" height="175px" src={item.EditedPhoto || `/items/item${item.Type}.svg`} alt="loading..." />

@@ -49,7 +49,7 @@ function ClosetPart() {
         <div className="fixed-top bg-light my-5" style={{ top: '14px' }}>
           <div className="d-flex justify-content-between align-items-center border-bottom" style={{ width: '375px' }}>
             <div className="px-4 p-3 text-m"><b>{partTitle}</b></div>
-            <a href="/Closet" className="px-3"><img src="/src/assets/img/icon/cross-circle.svg" style={{ width: '25px' }} alt="cancel" /></a>
+            <a href="/Closet" className="px-3"><img src="/assets/img/icon/cross-circle.svg" style={{ width: '25px' }} alt="cancel" /></a>
           </div>
         </div>
 

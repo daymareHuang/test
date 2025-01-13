@@ -163,11 +163,11 @@ function ClosetCheckOutfit() {
 
                     {/* 返回衣櫃 */}
                     <a onClick={handleTurnToCloset} className='position-absolute top-0 start-0 ms-4 mt-4 rounded-circle' style={{ cursor: 'pointer', padding: '7px 7px', width: '35px', height: '35px', backgroundColor: 'var(--color-white)' }}>
-                        <img src="/src/assets/img/icon/angle-left.svg" width='18px' />
+                        <img src="/assets/img/icon/angle-left.svg" width='18px' />
                     </a>
                     {/* 標籤開關 */}
                     <a onClick={handleShowTag} className='position-absolute bottom-0 end-0 me-4 mb-4 rounded-circle' style={{ cursor: 'pointer', padding: '7px 7px', width: '35px', height: '35px', backgroundColor: 'var(--color-white)' }}>
-                        <img src="/src/assets/img/icon/tags.svg" width='20px' />
+                        <img src="/assets/img/icon/tags.svg" width='20px' />
                     </a>
 
                     {/* 單品標籤 */}
