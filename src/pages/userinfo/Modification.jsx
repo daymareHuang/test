@@ -209,7 +209,7 @@ function Modification() {
                                         onChange={(e) => setPassword(e.target.value)}
                                     />
                                     <img
-                                        src="src/assets/img/icon/eye_lash.svg"
+                                        src="/assets/img/icon/eye_lash.svg"
                                         alt="Closed Eye Icon"
                                         width="20px"
                                         id="checkEye"
@@ -225,7 +225,7 @@ function Modification() {
                                         onClick={togglePasswordVisibility} />
 
                                     <img
-                                        src="src/assets/img/icon/eye.svg"
+                                        src="/assets/img/icon/eye.svg"
                                         alt="Open Eye Icon"
                                         width="20px"
                                         id="openEye"

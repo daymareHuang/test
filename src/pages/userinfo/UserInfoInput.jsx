@@ -22,7 +22,7 @@ function UserInfoInput() {
                     id="userPwd"
                     placeholder="請輸入密碼" />
                 <img
-                    src="src/assets/img/icon/eye_lash.svg"
+                    src="/assets/img/icon/eye_lash.svg"
                     alt="Closed Eye Icon"
                     width="20px"
                     id="checkEye"
@@ -38,7 +38,7 @@ function UserInfoInput() {
                     onClick={togglePasswordVisibility} />
 
                 <img
-                    src="src/assets/img/icon/eye.svg"
+                    src="/assets/img/icon/eye.svg"
                     alt="Open Eye Icon"
                     width="20px"
                     id="openEye"

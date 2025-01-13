@@ -124,12 +124,12 @@ function AddTag() {
 
 										{/* 刪除按鈕 */}
 										<div className='position-absolute' style={{ top: '-10px', left: '-10px', cursor: 'pointer' }}>
-											<img onClick={handleTagDelete} id={id} src="src/assets/img/icon/cross-circle-fill-white.svg" width='20px' />
+											<img onClick={handleTagDelete} id={id} src="/assets/img/icon/cross-circle-fill-white.svg" width='20px' />
 										</div>
 
 										{/* 編輯按鈕 */}
 										<div onClick={handleTagEdit} id={id} className='position-absolute end-0' style={{ top: '4px', transform: 'rotate(180deg)', cursor: 'pointer' }} >
-											<img  id={id} src="src/assets/img/icon/angle-left.svg" width='15px' />
+											<img  id={id} src="/assets/img/icon/angle-left.svg" width='15px' />
 										</div>
 
 										{/* 圓點 */}
