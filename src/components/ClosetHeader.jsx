@@ -32,11 +32,11 @@ function ClosetHeader({ isActive }) {
             onClick={() => { handleBtnActive('單品') }}>
             <b>單品</b>
           </a>
-          <a href="/ClosetMatch" className="col-2 ms-2 my-2 btn rounded-pill ssbtn"
+          <Link to="/ClosetMatch" className="col-2 ms-2 my-2 btn rounded-pill ssbtn"
             style={{ backgroundColor: activeBtn === '穿搭' ? 'var(--color-highlight)' : 'var(--color-base)', color: activeBtn === '穿搭' ? 'var(--color-white)' : 'var(--color-black)' }}
             onClick={() => { handleBtnActive('穿搭') }}>
             <b>穿搭</b>
-          </a>
+          </Link>
 
           <a className="col-6">
             <img src="/assets/img/icon/add.svg" style={{ width: '25px' }} alt="add" onClick={handleClickAdd} />
