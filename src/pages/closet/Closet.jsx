@@ -62,7 +62,7 @@ function Closet() {
           ) : (
             <p>Loading...</p>
           )}
-          <Link to="/ClosetPart/1"><img src="/assets/img/icon/dot-pending.svg" style={{ width: '24px' }} alt="more" /></=>
+          <Link to="/ClosetPart/1"><img src="/assets/img/icon/dot-pending.svg" style={{ width: '24px' }} alt="more" /></Link>
         </div>
 
         {/* <!-- 部位2 下身 --> */}
