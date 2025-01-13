@@ -1,6 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react'
 import ClosetLayoutO from '../../layouts/ClosetLayoutO'
 import { useLocation, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+
 
 function ClosetEditSingle() {
   const location = useLocation();
@@ -202,7 +204,7 @@ function ClosetEditSingle() {
       </div>
 
       <div id="progress" className="fixed-bottom border-top d-flex justify-content-between" style={{ height: '55px', width: '375px' }}>
-        <a href="./Crop" className="btn text-xs m-3 px-3 rounded-pill text-light" style={{ backgroundColor: 'var(--color-highlight)' }}>上一步</a>
+        <Link to="./Crop" className="btn text-xs m-3 px-3 rounded-pill text-light" style={{ backgroundColor: 'var(--color-highlight)' }}>上一步</Link>
         {/* 若使用者在此點擊「上一步」=> 會沒有將資料一同傳過去 */}
 
         <div onClick={handleComplete} className="btn text-xs m-3 px-3 rounded-pill text-light" style={{ backgroundColor: 'var(--color-highlight)' }}>完&nbsp;&nbsp;&nbsp;&nbsp;成</div>

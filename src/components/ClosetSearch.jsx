@@ -1,4 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
+import { Link } from 'react-router-dom';
+
 
 // 要考慮不要以component的方式嗎？這樣才有自己的搜尋頁面～
 function ClosetSearch({ close }) {
@@ -86,7 +88,7 @@ function ClosetSearch({ close }) {
                   [...result]   // for 保留result的不變性
                     .reverse()  // 將上面的result複製一份出來，再使用reverse()
                     .map((item, index) => (
-                      <a key={item.ItemID} href={`/ClosetCheckSingle/${item.ItemID}`} className="text-light">
+                      <Link key={item.ItemID} to={`/ClosetCheckSingle/${item.ItemID}`} className="text-light">
                         <img
                           className={`rounded my-2 ${index == result.length - 1 ? '' : 'me-4'}`}
                           width="230px"
@@ -94,7 +96,7 @@ function ClosetSearch({ close }) {
                           style={{ border: '2px solid var(--color-second' }}
                           src={item.EditedPhoto || `/items/item${item.Type}.svg`}
                         />
-                      </a>
+                      </Link>
                     ))
                 )}
               </div>

@@ -52,14 +52,14 @@ function Closet() {
               .slice(-2)  // 取出最後兩筆資料
               .reverse()  // 倒序排列 (後加的會出現在前面)
               .map((item) => (
-                <a key={item.ItemID} href={`/ClosetCheckSingle/${item.ItemID}`} className="text-light">
+                <Link key={item.ItemID} to={`/ClosetCheckSingle/${item.ItemID}`} className="text-light">
                   <img
                     className="border rounded my-2 me-4"
                     width="120px"
                     height="120px"
                     src={item.EditedPhoto || `/items/item${item.Type}.svg`} // 動態圖片
                   />
-                </a>
+                </Link>
               ))
           ) : (
             <p>Loading...</p>
@@ -76,14 +76,14 @@ function Closet() {
               .slice(-2)
               .reverse()
               .map((item) => (
-                <a key={item.ItemID} href={`/ClosetCheckSingle/${item.ItemID}`} className="text-light">
+                <Link key={item.ItemID} to={`/ClosetCheckSingle/${item.ItemID}`} className="text-light">
                   <img
                     className="border rounded my-2 me-4"
                     width="120px"
                     height="120px"
                     src={item.EditedPhoto || `/items/item${item.Type}.svg`}
                   />
-                </a>
+                </Link>
               ))
           ) : (
             <p>Loading...</p>
@@ -100,14 +100,14 @@ function Closet() {
               .slice(-2)
               .reverse()
               .map((item) => (
-                <a key={item.ItemID} href={`/ClosetCheckSingle/${item.ItemID}`} className="text-light">
+                <Link key={item.ItemID} to={`/ClosetCheckSingle/${item.ItemID}`} className="text-light">
                   <img
                     className="border rounded my-2 me-4"
                     width="120px"
                     height="120px"
                     src={item.EditedPhoto || `/items/item${item.Type}.svg`}
                   />
-                </a>
+                </Link>
               ))
           ) : (
             <p>Loading...</p>
@@ -124,14 +124,14 @@ function Closet() {
               .slice(-2)
               .reverse()
               .map((item) => (
-                <a key={item.ItemID} href={`/ClosetCheckSingle/${item.ItemID}`} className="text-light">
+                <Link key={item.ItemID} to={`/ClosetCheckSingle/${item.ItemID}`} className="text-light">
                   <img
                     className="border rounded my-2 me-4"
                     width="120px"
                     height="120px"
                     src={item.EditedPhoto || `/items/item${item.Type}.svg`}
                   />
-                </a>
+                </Link>
               ))
           ) : (
             <p>Loading...</p>

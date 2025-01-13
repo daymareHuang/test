@@ -2,6 +2,8 @@ import React, { useRef, useState, useEffect } from 'react'
 import ClosetLayoutN from '../../layouts/ClosetLayoutN'
 import Post from '../../components/Post'
 import { useParams, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+
 
 import pencil from '../../assets/img/icon/pencil.svg';
 import cross from '../..//assets/img/icon/cross.svg';
@@ -414,9 +416,9 @@ function ClosetCheckSingle() {
               <strong className="text-secondary ps-1 text-s">{outfit.OutfitTitle}</strong>
               <div className="d-flex ps-1" style={{ width: '334px', overflowX: 'auto' }}>
                 {outfit.ItemsInOutfit.map((item, index) => (
-                  <a key={item.ItemID} href={`/ClosetCheckSingle/${item.ItemID}`} className="text-light">
+                  <Link key={item.ItemID} to={`/ClosetCheckSingle/${item.ItemID}`} className="text-light">
                     <img className={`border rounded my-2 ${index == item.length - 1 ? '' : 'me-3'}`} width="95px" height="95px" src={item.EditedPhoto} />
-                  </a>
+                  </Link>
                 ))}
               </div>
             </div>
