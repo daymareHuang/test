@@ -5,8 +5,8 @@ import '../../css/Dressify.css'
 import CurrentDate from './CurrentDate'
 
 const weatherIcons = {
-    '晴天': './public/assets/img/weatherIcon/01.svg',
-    '晴時多雲': './public/assets/img/weatherIcon/02.svg',
+    '晴天': '/public/assets/img/weatherIcon/01.svg',
+    '晴時多雲': '/public/assets/img/weatherIcon/02.svg',
     '多雲時晴': '/assets/img/weatherIcon/03.svg',
     '多雲': '/assets/img/weatherIcon/04.svg',
     '多雲時陰': '/assets/img/weatherIcon/05.svg',
