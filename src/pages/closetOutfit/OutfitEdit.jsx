@@ -82,7 +82,7 @@ function OutfitDescription() {
                                 <div className='col-4'>
                                     <div className='d-inline py-1 px-3 rounded-4' style={{ border: '1px solid' }}>
                                         {val}
-                                        <img id={val} onClick={handleDel} className='ms-1' src="src\assets\img\icon\cancel.png" style={{ cursor: 'pointer' }} />
+                                        <img id={val} onClick={handleDel} className='ms-1' src="/assets/img/icon/cancel.png" style={{ cursor: 'pointer' }} />
                                     </div>
                                 </div>
                             ))}
